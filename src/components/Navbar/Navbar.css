@@ -14,3 +14,12 @@
   --bs-nav-link-hover-color: var(--bs-navbar-hover-color);
   --bs-nav-link-disabled-color: var(--bs-navbar-disabled-color);
 }
+
+.navbar-brand {
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
+.navbar-nav {
+  font-size: 2rem;
+}

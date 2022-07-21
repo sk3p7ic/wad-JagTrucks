@@ -4,7 +4,7 @@ import "./Navbar.css";
 export const Navbar = () => {
   return (
     <BSNavbar
-      className="px-4 nav-black-text"
+      className="px-4 nav-black-text font-oswald d-flex flex-lg-row align-items-baseline"
       fixed="top"
       expand="lg"
       variant="light"
@@ -15,11 +15,12 @@ export const Navbar = () => {
       <BSNavbar.Collapse id="main-nav">
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/schedule">Schecdule</Nav.Link>
+          <Nav.Link href="/schedule">Schedule</Nav.Link>
           <Nav.Link href="/trucks">Trucks</Nav.Link>
         </Nav>
+        <hr className="d-lg-none" />
         <Nav>
-          <Nav.Link href="/login" className="ms-auto">
+          <Nav.Link href="/login" className="ms-lg-auto">
             Login
           </Nav.Link>
         </Nav>
