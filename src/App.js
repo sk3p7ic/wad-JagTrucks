@@ -22,7 +22,10 @@ function App() {
       <div ref={navRef}>
         <Navbar />
       </div>
-      <div style={{ marginTop: `${navHeight.current}px` }}>
+      <div
+        className="min-vh-100 d-flex flex-column"
+        style={{ paddingTop: `${navHeight.current}px` }}
+      >
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="home" element={<HomePage />} />
