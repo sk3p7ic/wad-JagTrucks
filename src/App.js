@@ -13,17 +13,15 @@ function App() {
   useEffect(() => {
     const newNavHeight =
       navRef.current?.children[0].getBoundingClientRect().height;
-    if (newNavHeight !== undefined) navHeight.current = newNavHeight;
-    console.log(newNavHeight);
+    if (newNavHeight !== (undefined||0)) navHeight.current = newNavHeight;
+    console.log(navHeight.current);
   }, [navRef]);
 
   return (
     <NavProvider>
-      <div ref={navRef}>
-        <Navbar />
-      </div>
+      
       <div
-        className="min-vh-100 d-flex flex-column"
+        /*className="min-vh-100 d-flex flex-column"*/
         style={{ paddingTop: `${navHeight.current}px` }}
       >
         <Routes>
@@ -34,5 +32,4 @@ function App() {
     </NavProvider>
   );
 }
-
 export default App;
