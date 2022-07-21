@@ -1,6 +1,6 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 
-const NavContext = React.createContext("");
+const NavContext = React.createContext();
 
 export const useNavigation = () => useContext(NavContext);
 
