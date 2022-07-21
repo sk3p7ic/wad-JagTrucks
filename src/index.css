@@ -78,3 +78,15 @@
 body {
   background-color: var(--bs-light);
 }
+
+.font-oswald {
+  font-family: "Oswald", sans-serif;
+}
+
+.font-vollkorn {
+  font-family: "Vollkorn", sans-serif;
+}
+
+.font-nunito {
+  font-family: "Nunito", sans-serif;
+}
