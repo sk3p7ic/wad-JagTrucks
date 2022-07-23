@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { NavProvider } from "./contexts/NavigationContext";
 import { Navbar } from "./components/Navbar/Navbar";
 import { HomePage } from "./pages/home";
+import { NonexistentPage } from "./pages/pageNotFound";
 import { useEffect, useRef } from "react";
 
 function App() {
@@ -20,12 +21,13 @@ function App() {
     <NavProvider>
       <div className="min-vh-100 d-flex flex-column">
         <Navbar />
-        <div className="flex-grow-1 overflow-auto">
+        <div className="flex-grow-1 overflow-auto d-flex flex-column">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="home" element={<HomePage />} />
             <Route path="schedule" element={<HomePage />} />
             <Route path="trucks" element={<HomePage />} />
+            <Route path="*" element={<NonexistentPage />} />
           </Routes>
         </div>
       </div>
