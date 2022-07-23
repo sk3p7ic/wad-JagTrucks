@@ -14,7 +14,6 @@ function App() {
     const newNavHeight =
       navRef.current?.children[0].getBoundingClientRect().height;
     if (newNavHeight !== (undefined || 0)) navHeight.current = newNavHeight;
-    console.log(navHeight.current);
   }, [navRef]);
 
   return (
@@ -25,6 +24,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="home" element={<HomePage />} />
+            <Route path="schedule" element={<HomePage />} />
+            <Route path="trucks" element={<HomePage />} />
           </Routes>
         </div>
       </div>
