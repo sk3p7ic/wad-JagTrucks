@@ -8,7 +8,6 @@ export const Navbar = () => {
   return (
     <BSNavbar
       className="px-4 nav-black-text font-oswald d-flex flex-lg-row align-items-baseline"
-      fixed="top"
       expand="lg"
       variant="light"
       bg="light"
