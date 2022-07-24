@@ -10,8 +10,8 @@ export const NonexistentPage = () => {
   useEffect(() => setCurrentPage("404"), []); // Update current page after component mounts
 
   const goHome = () => {
-    setCurrentPage("/");
-    routerNavigate("/");
+    setCurrentPage("/"); // Manually change the page back to the home page
+    routerNavigate("/"); // Navigate back to the home page
   };
 
   return (
