@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { NavProvider } from "./contexts/NavigationContext";
 import { Navbar } from "./components/Navbar/Navbar";
 import { HomePage } from "./pages/home";
+import { SchedulePage } from "./pages/Schedule";
+import { TrucksPage } from "./pages/Trucks";
 import { NonexistentPage } from "./pages/PageNotFound";
 import { useEffect, useRef } from "react";
 
@@ -25,8 +27,8 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="home" element={<HomePage />} />
-            <Route path="schedule" element={<HomePage />} />
-            <Route path="trucks" element={<HomePage />} />
+            <Route path="schedule" element={<SchedulePage />} />
+            <Route path="trucks" element={<TrucksPage />} />
             <Route path="*" element={<NonexistentPage />} />
           </Routes>
         </div>
