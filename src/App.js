@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { NavProvider } from "./contexts/NavigationContext";
 import { Navbar } from "./components/Navbar/Navbar";
 import { HomePage } from "./pages/home";
-import { NonexistentPage } from "./pages/pageNotFound";
+import { NonexistentPage } from "./pages/PageNotFound";
 import { useEffect, useRef } from "react";
 
 function App() {
