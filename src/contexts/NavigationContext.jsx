@@ -5,7 +5,7 @@ const NavContext = React.createContext();
 export const useNavigation = () => useContext(NavContext);
 
 export const NavProvider = ({ children }) => {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState("/");
 
   return (
     <NavContext.Provider value={{ currentPage, setCurrentPage }}>

@@ -1,0 +1,14 @@
+[
+  {
+    "pageName": "Home",
+    "pagePath": "/"
+  },
+  {
+    "pageName": "Schedule",
+    "pagePath": "/schedule"
+  },
+  {
+    "pageName": "Trucks",
+    "pagePath": "/trucks"
+  }
+]

@@ -4,10 +4,10 @@ import Col from "react-bootstrap/esm/Col";
 
 function blockofTitle() {
   return (
-   <div className = "d-flex flex-row justify-content-between">
-    <div className="intro_to_pg">Welcome to our page!</div>
-    <div className="image_of_taco">Add the Taco Here.</div>
-   </div>
+    <div className="flex-grow-1 d-flex flex-row justify-content-between">
+      <div className="intro_to_pg">Welcome to our page!</div>
+      <div className="image_of_taco">Add the Taco Here.</div>
+    </div>
   );
 }
 
@@ -22,8 +22,6 @@ function blockofTitle() {
 
 export const HomePage = () => {
   return blockofTitle();
-
 };
-
 
 // npm start
