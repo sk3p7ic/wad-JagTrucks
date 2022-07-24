@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useNavigation } from "../contexts/NavigationContext";
 
@@ -19,9 +20,9 @@ export const NonexistentPage = () => {
       <h1 className="font-vollkorn">
         Sorry, but the page you're looking for does not exist.
       </h1>
-      <button className="btn btn-primary" onClick={goHome}>
-        <h1 className="display-6 font-oswald m-0">Go Home</h1>
-      </button>
+      <Button onClick={goHome}>
+        <span className="display-6">Go Home</span>
+      </Button>
     </div>
   );
 };
