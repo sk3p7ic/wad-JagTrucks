@@ -9,9 +9,10 @@ import { formatDate } from "../util/calendarOperations";
 const ScheduleCalendarButtons = () => {
   const { dateManager } = useCalendar();
   const days = dateManager.weekDateRange;
+
   return (
-    <div className="d-flex flex-column flex-lg-row">
-      <div className="d-flex flex-row">
+    <div className="d-flex flex-column flex-lg-row justify-content-between">
+      <div className="d-flex flex-row gap-3">
         <ButtonGroup>
           <Button variant="primary">
             <BsChevronLeft />
@@ -21,9 +22,13 @@ const ScheduleCalendarButtons = () => {
           </Button>
         </ButtonGroup>
         <h1 className="font-nunito m-0">
-          {days.monday.toDateString()} - {days.friday.toDateString()}
+          {formatDate(days.monday)} - {formatDate(days.friday)}
         </h1>
       </div>
+      <h1 className="font-nunito m-0">
+        <strong>Today: </strong>
+        {new Date().toDateString()}
+      </h1>
     </div>
   );
 };

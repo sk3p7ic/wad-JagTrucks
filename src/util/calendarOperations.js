@@ -46,6 +46,7 @@ export class DateManager {
  * @param {Date} date The date to format.
  */
 export const formatDate = (date) => {
-  console.log(typeof date);
-  return date.toDateString().split(" ").shift().join(" ");
+  const dateStringArr = date.toDateString().split(" ");
+  dateStringArr.shift();
+  return dateStringArr.join(" ");
 };
