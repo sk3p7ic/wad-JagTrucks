@@ -14,9 +14,16 @@ export class DateManager {
   }
 
   get weekDateRange() {
-    let days = [new Date(), new Date(), new Date(), new Date(), new Date()];
+    const currentDate = new Date(); // Get today's date
+    let days = [new Date(), new Date(), new Date(), new Date(), new Date()]; // Stores the dates for days of week
+    // Calculate the days of the week
     days.forEach((day, index) => {
-      const offset = 7 * this.#weekOffset;
+      // Calculate the day offset from Sunday
+      const weekdayOffset =
+        currentDate.getDate() - (currentDate.getDate() - currentDate.getDay());
+      // Calculate the number of days in the past / future this date will be and account for offset from Sunday
+      const offset = 7 * this.#weekOffset - weekdayOffset;
+      // Set the date, using the index to help select which day it is
       day.setDate(day.getDate() + offset + (index + 1));
     });
     return {
