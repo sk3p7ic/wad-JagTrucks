@@ -1,19 +1,12 @@
 export class DateManager {
-  #currentSunday;
-
-  constructor() {
-    const currentDate = new Date();
-    this.#currentSunday = new Date(
-      currentDate.setDate(currentDate.getDate() - currentDate.getDay())
-    );
-  }
+  #weekOffset = 0;
 
   incrWeek() {
-    this.#currentSunday = this.#currentSunday.getDate() + 7;
+    this.#weekOffset += 1;
   }
 
   decrWeek() {
-    this.#currentSunday = this.#currentSunday.getDate() - 7;
+    this.#weekOffset -= 1;
   }
 
   get currentDate() {
@@ -21,22 +14,17 @@ export class DateManager {
   }
 
   get weekDateRange() {
-    let mon = new Date();
-    let tues = new Date();
-    let wed = new Date();
-    let thurs = new Date();
-    let fri = new Date();
-    mon.setDate(this.#currentSunday.getDate() + 1);
-    tues.setDate(this.#currentSunday.getDate() + 2);
-    wed.setDate(this.#currentSunday.getDate() + 3);
-    thurs.setDate(this.#currentSunday.getDate() + 4);
-    fri.setDate(this.#currentSunday.getDate() + 5);
+    let days = [new Date(), new Date(), new Date(), new Date(), new Date()];
+    days.forEach((day, index) => {
+      const offset = 7 * this.#weekOffset;
+      day.setDate(day.getDate() + offset + (index + 1));
+    });
     return {
-      monday: mon,
-      tuesday: tues,
-      wednesday: wed,
-      thursday: thurs,
-      friday: fri,
+      mon: days[0],
+      tue: days[1],
+      wed: days[2],
+      thu: days[3],
+      fri: days[4],
     };
   }
 }
