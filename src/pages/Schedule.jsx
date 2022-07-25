@@ -18,7 +18,7 @@ const ScheduleCalendarButtons = () => {
   };
 
   return (
-    <div className="d-flex flex-column flex-lg-row justify-content-between">
+    <div className="d-flex flex-column flex-xl-row justify-content-between">
       <div className="d-flex flex-row gap-3">
         <ButtonGroup>
           <Button variant="primary" onClick={() => handleClick("decr")}>
