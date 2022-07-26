@@ -4,10 +4,9 @@ import { ScheduleCalendar } from "../components/Schedule/ScheduleCalendar";
 import { useState } from "react";
 import { DateManager } from "../util/calendarOperations";
 
-const dateManager = new DateManager();
+const dateManager = new DateManager(); // Manages the current dates that are being displayed
 
 export const SchedulePage = () => {
-  //const { dateManager } = useCalendar();
   const [days, setDays] = useState(dateManager.weekDateRange);
   const currentDate = dateManager.currentDate;
 
