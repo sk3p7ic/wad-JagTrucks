@@ -6,6 +6,7 @@ import { HomePage } from "./pages/home";
 import { SchedulePage } from "./pages/Schedule";
 import { TrucksPage } from "./pages/Trucks";
 import { NonexistentPage } from "./pages/PageNotFound";
+import { TruckViewPage } from "./pages/trucks/TruckView";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="home" element={<HomePage />} />
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="trucks" element={<TrucksPage />} />
+            <Route path="trucks/:truckId" element={<TruckViewPage />} />
             <Route path="*" element={<NonexistentPage />} />
           </Routes>
         </div>
