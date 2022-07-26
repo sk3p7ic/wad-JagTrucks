@@ -15,8 +15,6 @@ export const SchedulePage = () => {
     if (mode === "incr") dateManager.incrWeek();
     else dateManager.decrWeek();
     setDays(dateManager.weekDateRange);
-    console.log(`Clicked: ${mode}`);
-    console.log(days);
   };
 
   return (
