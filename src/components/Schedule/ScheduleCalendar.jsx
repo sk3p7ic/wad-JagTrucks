@@ -1,6 +1,11 @@
 import { Card, CardGroup } from "react-bootstrap";
+import { getTrucksForWeek } from "../../util/db/schedule";
+import { getTruckDataFromTruckScheduleList } from "../../util/db/trucks";
 
 export const ScheduleCalendar = ({ days, currentDate }) => {
+  const weekTrucks = getTrucksForWeek(days);
+  const truckData = getTruckDataFromTruckScheduleList(weekTrucks);
+  //console.log(truckData);
   return (
     <CardGroup className="d-block d-xl-flex">
       <Card>
