@@ -1,6 +1,15 @@
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
+import { useNavigation } from "../contexts/NavigationContext";
 
 export const TrucksPage = () => {
+  const { setCurrentPage } = useNavigation();
+
+  useEffect(() => {
+    const unsubscribe = setCurrentPage("/trucks");
+    return unsubscribe;
+  }, [setCurrentPage]);
+
   return (
     <Container>
       <h1 className="display-1 font-oswald">Looking for something?</h1>
