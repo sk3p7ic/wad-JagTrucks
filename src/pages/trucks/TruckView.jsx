@@ -1,4 +1,8 @@
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Container } from "react-bootstrap";
+import { BsArrowLeftCircleFill } from "react-icons/bs";
+import { Link, useParams } from "react-router-dom";
+import { useNavigation } from "../../contexts/NavigationContext";
 
 /* TODO:
  - Trucks link needs to be active in the navbar.
@@ -6,7 +10,20 @@ import { useParams } from "react-router-dom";
 */
 
 export const TruckViewPage = () => {
+  const { setCurrentPage } = useNavigation();
   const { truckId } = useParams();
 
-  return <h1>Truck listing for {truckId}</h1>;
+  useEffect(() => {
+    const unsubscribe = setCurrentPage("/trucks");
+    return unsubscribe;
+  }, [setCurrentPage]);
+
+  return (
+    <Container>
+      <Link to="/trucks">
+        <BsArrowLeftCircleFill size="48" />
+      </Link>
+      <h1>Truck listing for {truckId}</h1>
+    </Container>
+  );
 };
