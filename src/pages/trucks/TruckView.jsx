@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import { useNavigation } from "../../contexts/NavigationContext";
