@@ -1,0 +1,11 @@
+{
+  "name": "Test Truck #1",
+  "profileImgPath": "",
+  "headerImgPath": "",
+  "primaryFoodType": "food-type",
+  "acceptsDiningDollars": true,
+  "socials": [
+    { "name": "facebook", "link": "https://facebook.com" },
+    { "name": "twitter", "link": "https://twitter.com" }
+  ]
+}
