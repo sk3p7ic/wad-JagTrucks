@@ -7,7 +7,7 @@ export const getTrucksForWeek = (days) => {
       const dayTrucks = truckSchedule.find(
         (entry) => entry.date === day.getDate()
       );
-      trucks.set(day, dayTrucks?.trucks);
+      trucks.set(day.getDate(), dayTrucks?.trucks);
     }
   });
   return trucks;

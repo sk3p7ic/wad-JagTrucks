@@ -1,6 +1,7 @@
 import { Card, CardGroup } from "react-bootstrap";
 import { getTrucksForWeek } from "../../util/db/schedule";
 import { getTruckDataFromTruckScheduleList } from "../../util/db/trucks";
+import { DayCard } from "./DayCards";
 
 export const ScheduleCalendar = ({ days, currentDate }) => {
   const weekTrucks = getTrucksForWeek(days);
@@ -25,7 +26,14 @@ export const ScheduleCalendar = ({ days, currentDate }) => {
                 : ""
             }`}
           >
-            Lorem ipsum
+            {weekTrucks.get(day.getDate()) !== undefined ? (
+              <DayCard
+                dayInfo={weekTrucks.get(day.getDate())}
+                truckData={truckData}
+              />
+            ) : (
+              <h3>No truck data for this day...</h3>
+            )}
           </Card.Body>
         </Card>
       ))}
