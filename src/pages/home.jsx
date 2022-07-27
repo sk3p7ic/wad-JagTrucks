@@ -14,7 +14,7 @@ function blockofTitle() {
         <br></br>
         <h1>Dining on campus,<br></br>Made simple.</h1>
         <h3>Explore the options available today.</h3>
-        <Button variant="success">What's Here Today </Button>
+        <Button variant="success">What's Here Today </Button> {/*Change to Button group? */}
         <Button variant="secondary">View All Trucks </Button>
       </div>
       {/*<div className="image_of_taco">Add the Taco Here.</div>*/}
