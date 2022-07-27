@@ -7,7 +7,7 @@ function blockofTitle() {
     <div className="flex-grow-1 d-flex flex-row justify-content-between">
       <div className="intro_to_pg">Welcome to our page!</div>
       {/*<div className="image_of_taco">Add the Taco Here.</div>*/}
-      <img src="img/Tacos.png" width={300} height={500}  alt="image of tacos"/>
+      <img src="img/Tacos.png" width={450} height={750}  alt="image of tacos"/>
     </div>
   );
 }
