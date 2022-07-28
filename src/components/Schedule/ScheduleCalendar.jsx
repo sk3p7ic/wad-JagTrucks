@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Card, CardGroup } from "react-bootstrap";
 import { getTrucksForWeek } from "../../util/db/schedule";
 import { getTruckDataFromTruckScheduleList } from "../../util/db/trucks";
-import { DayCard } from "./DayCards";
+import { DayCards } from "./DayCards";
 
 export const ScheduleCalendar = ({ days, currentDate }) => {
   //const weekTrucks = getTrucksForWeek(days);
   //const truckData = getTruckDataFromTruckScheduleList(weekTrucks);
-  const [weeklyTruckSchedule, setWeeklyTruckSchedule] = useState();
-  const [truckData, setTruckData] = useState();
+  const [weeklyTruckSchedule, setWeeklyTruckSchedule] = useState(null);
+  const [truckData, setTruckData] = useState(null);
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
   useEffect(() => {
@@ -48,7 +48,16 @@ export const ScheduleCalendar = ({ days, currentDate }) => {
                 ? "bg-secondary"
                 : ""
             }`}
-          ></Card.Body>
+          >
+            {weeklyTruckSchedule === null || truckData === null ? (
+              <h3>Loading...</h3>
+            ) : (
+              <DayCards
+                dayInfo={weeklyTruckSchedule.get(day.getDate())}
+                truckData={truckData}
+              />
+            )}
+          </Card.Body>
         </Card>
       ))}
     </CardGroup>
