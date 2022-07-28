@@ -11,11 +11,13 @@ function blockofTitle() {
         <br></br>
         <br></br>
         <br></br>
-        <br></br>
-        <h1>Dining on campus,<br></br>Made simple.</h1>
-        <h3>Explore the options available today.</h3>
-        <Button variant="success">What's Here Today </Button> {/*Change to Button group? */}
-        <Button variant="secondary">View All Trucks </Button>
+        <h1 className="display-1 font-oswald">Dining on campus,<br></br>Made simple.</h1>
+        <h5 className="display-5 font-vollkorn">Explore the options available today.</h5>
+        <div>
+          <Button variant="success" size="lg" href="/Schedule">What's Here Today </Button> {''}
+          <Button variant="outline-success" size="lg" href="/Trucks" >View All Trucks </Button>
+        </div>
+
       </div>
       {/*<div className="image_of_taco">Add the Taco Here.</div>*/}
       <img src="img/Tacos.png" width={450} height={750}  alt="image of tacos"/>
@@ -37,3 +39,5 @@ export const HomePage = () => {
 };
 
 // npm start
+//font-oswald
+//font-vollkorn
