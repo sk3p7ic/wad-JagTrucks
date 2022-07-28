@@ -37,9 +37,13 @@ export const getTruckDataFromTruckScheduleList = async (schedule) => {
   // Get the information for the trucks
   const truckData = new Map();
   if (neededTrucks.size === 0) return truckData;
-  neededTrucks.forEach(async (truckId) => {
+  //neededTrucks.forEach(async (truckId) => {
+  //  const truck = await getTruckDataFromId(truckId);
+  //  truckData.set(truckId, truck);
+  //});
+  for await (const truckId of neededTrucks) {
     const truck = await getTruckDataFromId(truckId);
     truckData.set(truckId, truck);
-  });
+  }
   return truckData;
 };
