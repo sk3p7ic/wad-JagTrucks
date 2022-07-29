@@ -1,20 +1,26 @@
 import { FaFacebook, FaLink, FaTwitter } from "react-icons/fa";
 
+const size = 30;
+
 export const TruckSocial = ({ siteName, url }) => {
   let elem;
   switch (siteName.toLowerCase()) {
     case "facebook":
-      elem = <FaFacebook />;
+      elem = <FaFacebook size={size} />;
       break;
     case "twitter":
-      elem = <FaTwitter />;
+      elem = <FaTwitter size={size} />;
       break;
     case "website":
-      elem = <FaLink />;
+      elem = <FaLink size={size} />;
       break;
     case "default":
-      elem = <FaLink />;
+      elem = <FaLink size={size} />;
       break;
   }
-  return <a href={url}>{elem}</a>;
+  return (
+    <a href={url} className="text-dark">
+      {elem}
+    </a>
+  );
 };
