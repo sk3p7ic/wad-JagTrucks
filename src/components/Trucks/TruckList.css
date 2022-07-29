@@ -1,0 +1,6 @@
+.truck-page-trucklist {
+  --grid-col-count: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-col-count), auto);
+  gap: 0.5rem;
+}

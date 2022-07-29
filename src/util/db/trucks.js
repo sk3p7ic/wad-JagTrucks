@@ -27,3 +27,9 @@ export const getTruckDataFromTruckScheduleList = async (schedule) => {
   }
   return truckData;
 };
+
+export const getAllTrucks = async () => {
+  const res = await fetch("/api/get/trucks");
+  const trucks = await res.json();
+  return Object.values(trucks);
+};
