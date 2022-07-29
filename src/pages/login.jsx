@@ -2,7 +2,7 @@ import { Container, Button, Form} from 'react-bootstrap';
 
 export function FoodTruckLogin(){
     return(
-    <Container className=" d-flex flex-column justify-content-centers align-items-center" >
+    <Container className=" d-flex flex-column justify-content-center align-items-center" >
         <Form style= {{width:"fit-content"}}>  {/*className = "w-50vh"*/}
             <Form.Group className="mb-3" controlId="formBasicEmail">
              <Form.Label>Email address</Form.Label>
@@ -18,7 +18,8 @@ export function FoodTruckLogin(){
             </Form.Group>
             <Button variant="primary" type="submit">
                 Submit
-            </Button>
+            </Button> {' '}
+            <Button variant="primary" size='md' href="/newUser">New User</Button>
         </Form>
     </Container>
     );

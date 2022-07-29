@@ -8,6 +8,8 @@ import { TrucksPage } from "./pages/Trucks";
 import { NonexistentPage } from "./pages/PageNotFound";
 import { TruckViewPage } from "./pages/trucks/TruckView";
 import {FoodTruckLogin} from "./pages/login";
+import { NewFoodTruck } from "./pages/newUser";
+
 function App() {
   return (
     <NavProvider>
@@ -21,6 +23,7 @@ function App() {
             <Route path="trucks" element={<TrucksPage />} />
             <Route path="trucks/:truckId" element={<TruckViewPage />} />
             <Route path="login" element={<FoodTruckLogin />}/>
+            <Route path="newUser" element={<NewFoodTruck />}/>
             <Route path="*" element={<NonexistentPage />} />
           </Routes>
         </div>
