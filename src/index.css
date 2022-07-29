@@ -75,6 +75,26 @@
   --bs-highlight-bg: #fff3cd;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bs-dark);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bs-black);
+}
+
+/* Normal Elements */
+
 body {
   background-color: var(--bs-light);
 }
