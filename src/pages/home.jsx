@@ -14,7 +14,9 @@ function blockofTitle() {
           <Button variant="success" size="lg" href="/Schedule">What's Here Today </Button> {''}
           <Button variant="outline-success" size="lg" href="/Trucks">View All Trucks </Button>
         </div>
-
+        <br></br>
+        {/*<Button variant="secondary" size="lg" href=""> Food Truck Driver Login/Create Sign-In </Button> {''}*/} {/*For a visible button.*/}
+        <Button variant="outline-light" size="lg" href=""> Food Truck Driver Login/Create Sign-In </Button> {''} {/*For a "Secure" button*/}
       </div>
       {/*<div className="image_of_taco">Add the Taco Here.</div>*/}
       <img src="img/Tacos.png" style={{height:"75vh"}} className="d-none d-lg-block" alt="image of tacos"/>
