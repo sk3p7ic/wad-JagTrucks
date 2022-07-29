@@ -88,7 +88,10 @@ const DayCard = ({ scheduleItem, truckData }) => {
 
   return (
     <Card>
-      <Card.Img src={getTruckImageUrl(scheduleItem.truck_id)} />
+      <Card.Img
+        src={getTruckImageUrl(scheduleItem.truck_id)}
+        alt="Truck header"
+      />
       <Card.Body className="d-flex flex-column gap-2">
         <div className="row">
           <div className="col">

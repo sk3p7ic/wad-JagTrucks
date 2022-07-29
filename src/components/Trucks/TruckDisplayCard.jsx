@@ -4,7 +4,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 export const TruckDisplayCard = ({ truck }) => {
   return (
     <Card>
-      <Card.Img src={`/images/${truck.header_img_path}`} />
+      <Card.Img src={`/images/${truck.header_img_path}`} alt="Truck header" />
       <Card.Body className="d-flex flex-column gap-4 font-nunito">
         <div className="d-flex flex-row">
           <div className="flex-grow-1">
