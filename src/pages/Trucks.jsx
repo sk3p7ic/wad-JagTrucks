@@ -11,7 +11,7 @@ export const TrucksPage = () => {
   }, [setCurrentPage]);
 
   return (
-    <Container>
+    <Container fluid style={{ padding: "0vw 5vw" }}>
       <h1 className="display-1 font-oswald">Looking for something?</h1>
       <div className="d-flex flex-column px-4"></div>
     </Container>
