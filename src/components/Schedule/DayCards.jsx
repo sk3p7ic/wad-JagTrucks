@@ -101,6 +101,9 @@ const DayCard = ({ scheduleItem, truckData }) => {
             {getAcceptsDiningDollars(scheduleItem.truck_id)}
           </div>
         </div>
+        <Button className="w-100" href={`/trucks/${scheduleItem.truck_id}`}>
+          View Menu
+        </Button>
       </Card.Body>
     </Card>
   );
