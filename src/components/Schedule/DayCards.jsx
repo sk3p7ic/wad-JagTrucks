@@ -1,12 +1,11 @@
 import { Badge, Button, Card } from "react-bootstrap";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { TruckSocial } from "../SocialDisplay";
 
 const DayCard = ({ scheduleItem, truckData }) => {
   const getTruckName = (truckId) => {
     const truck = truckData.get(truckId);
-    return truck === undefined || null ? <h2></h2> : <h2>{truck.name}</h2>;
+    return truck === undefined || null ? <div></div> : <h2>{truck.name}</h2>;
   };
 
   const getTruckFoodType = (truckId) => {
@@ -119,12 +118,6 @@ const DayCard = ({ scheduleItem, truckData }) => {
 };
 
 export const DayCards = ({ dayInfo, truckData }) => {
-  const routerNavigate = useNavigate();
-
-  const handleNavigationClick = (truckId) => {
-    routerNavigate(`/trucks/${truckId}`);
-  };
-
   return (
     <>
       {dayInfo === undefined || null || dayInfo.length === 0 ? (

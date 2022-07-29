@@ -14,7 +14,7 @@ export const TruckSocial = ({ siteName, url }) => {
     case "website":
       elem = <FaLink size={size} />;
       break;
-    case "default":
+    default:
       elem = <FaLink size={size} />;
       break;
   }
