@@ -1,10 +1,21 @@
-import { Button, Card } from "react-bootstrap";
+import { Badge, Button, Card } from "react-bootstrap";
+import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { TruckSocial } from "../SocialDisplay";
 
 const DayCard = ({ scheduleItem, truckData }) => {
   const getTruckName = (truckId) => {
     const truck = truckData.get(truckId);
     return truck === undefined || null ? <h2></h2> : <h2>{truck.name}</h2>;
+  };
+
+  const getTruckFoodType = (truckId) => {
+    const truck = truckData.get(truckId);
+    return (
+      <Badge pill bg="primary">
+        {truck?.primary_food_type}
+      </Badge>
+    );
   };
 
   const getTruckImageUrl = (truckId) => {
@@ -34,11 +45,63 @@ const DayCard = ({ scheduleItem, truckData }) => {
     );
   };
 
+  const getAcceptsDiningDollars = (truckId) => {
+    const truck = truckData.get(truckId);
+    const accepts = truck?.accepts_dining_dollars | false;
+    return (
+      <div className="d-flex flex-column">
+        <p>Accepts Dining Dollars:</p>
+        <div className="text-end">
+          {accepts ? (
+            <MdCheckBox size={24} />
+          ) : (
+            <MdCheckBoxOutlineBlank size={24} />
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  const getTruckSocials = (truckId) => {
+    const truck = truckData.get(truckId);
+    const socials = truck?.socials;
+    if (socials === undefined || null) return <div></div>;
+    const sites = Object.keys(socials);
+    const urls = Object.values(socials);
+    let elements = [];
+    sites.forEach((site, index) => {
+      const url = urls[index];
+      elements = [...elements, <TruckSocial siteName={site} url={url} />];
+    });
+    return (
+      <div className="d-flex flex-row">
+        {elements.map((elem, index) => (
+          <span key={index}>{elem}</span>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Card>
       <Card.Img src={getTruckImageUrl(scheduleItem.truck_id)} />
-      <Card.Title>{getTruckName(scheduleItem.truck_id)}</Card.Title>
-      <Card.Body>{getTruckTimes()}</Card.Body>
+      <Card.Body>
+        <div className="row">
+          <div className="col">
+            <Card.Title>{getTruckName(scheduleItem.truck_id)}</Card.Title>
+          </div>
+          <div className="col">{getTruckFoodType(scheduleItem.truck_id)}</div>
+        </div>
+        <div className="row">
+          <div className="col d-flex flex-column">
+            {getTruckTimes()}
+            {getTruckSocials(scheduleItem.truck_id)}
+          </div>
+          <div className="col">
+            {getAcceptsDiningDollars(scheduleItem.truck_id)}
+          </div>
+        </div>
+      </Card.Body>
     </Card>
   );
 };
