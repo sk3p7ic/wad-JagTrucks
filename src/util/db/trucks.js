@@ -33,3 +33,14 @@ export const getAllTrucks = async () => {
   const trucks = await res.json();
   return Object.values(trucks);
 };
+
+export const truckQueryFilters = {
+  foodType: "/api/query/trucks/foodType/",
+  diningDollars: "/api/query/trucks/diningDollars/",
+};
+
+export const getTrucksByFilter = async (filterString, value) => {
+  const res = await fetch(`${filterString}${value}`);
+  const trucks = await res.json();
+  return Object.values(trucks);
+};
