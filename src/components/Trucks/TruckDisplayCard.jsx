@@ -5,10 +5,10 @@ export const TruckDisplayCard = ({ truck }) => {
   return (
     <Card>
       <Card.Img src={`/images/${truck.header_img_path}`} />
-      <Card.Body className="d-flex flex-column gap-4">
+      <Card.Body className="d-flex flex-column gap-4 font-nunito">
         <div className="d-flex flex-row">
           <div className="flex-grow-1">
-            <Card.Title>
+            <Card.Title className="font-oswald">
               <h1>{truck.name}</h1>
             </Card.Title>
           </div>
@@ -16,8 +16,8 @@ export const TruckDisplayCard = ({ truck }) => {
             <Badge
               pill
               bg="primary"
-              className="font-oswald p-2"
-              style={{ height: "fit-content" }}
+              className="font-oswald py-2 px-4"
+              style={{ height: "fit-content", fontSize: "1.5rem" }}
             >
               {truck?.primary_food_type}
             </Badge>

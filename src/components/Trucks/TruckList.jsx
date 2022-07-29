@@ -3,7 +3,7 @@ import "./TruckList.css";
 
 export const TruckList = ({ trucks }) => {
   return (
-    <div className="truck-page-trucklist">
+    <div className="truck-page-trucklist pb-2">
       {(trucks !== undefined) | null ? (
         trucks.map((truck, index) => (
           <TruckDisplayCard truck={truck} key={index} />
