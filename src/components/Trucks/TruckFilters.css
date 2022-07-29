@@ -1,0 +1,10 @@
+.search-container {
+  --search-container-width: auto;
+  width: var(--search-container-width);
+}
+
+@media screen and (min-width: 992px) {
+  .search-container {
+    --search-container-width: 35vw;
+  }
+}

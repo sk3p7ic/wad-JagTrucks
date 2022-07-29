@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Form, InputGroup, FloatingLabel, Button } from "react-bootstrap";
+import "./TruckFilters.css";
 
 export const TruckFilters = ({ onFilterChangeCallback }) => {
   const [searchValue, setSearchValue] = useState("");
@@ -15,8 +16,8 @@ export const TruckFilters = ({ onFilterChangeCallback }) => {
   };
 
   return (
-    <div className="p-4 d-flex flex-column flex-md-row">
-      <InputGroup style={{ width: "15vw" }}>
+    <div className="p-4 d-flex flex-column flex-lg-row">
+      <InputGroup className="search-container">
         <FloatingLabel controlId="truckNameSearch" label="Search">
           <Form.Control
             type="text"
