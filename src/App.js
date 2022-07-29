@@ -7,7 +7,7 @@ import { SchedulePage } from "./pages/Schedule";
 import { TrucksPage } from "./pages/Trucks";
 import { NonexistentPage } from "./pages/PageNotFound";
 import { TruckViewPage } from "./pages/trucks/TruckView";
-
+import {FoodTruckLogin} from "./pages/login";
 function App() {
   return (
     <NavProvider>
@@ -20,6 +20,7 @@ function App() {
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="trucks" element={<TrucksPage />} />
             <Route path="trucks/:truckId" element={<TruckViewPage />} />
+            <Route path="login" element={<FoodTruckLogin />}/>
             <Route path="*" element={<NonexistentPage />} />
           </Routes>
         </div>
