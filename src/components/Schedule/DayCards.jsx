@@ -1,18 +1,22 @@
 import { Badge, Button, Card } from "react-bootstrap";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { TruckSocial } from "../SocialDisplay";
 
 const DayCard = ({ scheduleItem, truckData }) => {
   const getTruckName = (truckId) => {
     const truck = truckData.get(truckId);
-    return truck === undefined || null ? <h2></h2> : <h2>{truck.name}</h2>;
+    return truck === undefined || null ? <div></div> : <h2>{truck.name}</h2>;
   };
 
   const getTruckFoodType = (truckId) => {
     const truck = truckData.get(truckId);
     return (
-      <Badge pill bg="primary">
+      <Badge
+        pill
+        bg="primary"
+        className="font-oswald p-2"
+        style={{ height: "fit-content" }}
+      >
         {truck?.primary_food_type}
       </Badge>
     );
@@ -49,13 +53,13 @@ const DayCard = ({ scheduleItem, truckData }) => {
     const truck = truckData.get(truckId);
     const accepts = truck?.accepts_dining_dollars | false;
     return (
-      <div className="d-flex flex-column">
-        <p>Accepts Dining Dollars:</p>
-        <div className="text-end">
+      <div className="h-100 d-flex flex-column justify-content-between align-items-end text-end">
+        <p>Dining Dollars:</p>
+        <div>
           {accepts ? (
-            <MdCheckBox size={24} />
+            <MdCheckBox size={30} />
           ) : (
-            <MdCheckBoxOutlineBlank size={24} />
+            <MdCheckBoxOutlineBlank size={30} />
           )}
         </div>
       </div>
@@ -74,7 +78,7 @@ const DayCard = ({ scheduleItem, truckData }) => {
       elements = [...elements, <TruckSocial siteName={site} url={url} />];
     });
     return (
-      <div className="d-flex flex-row">
+      <div className="d-flex flex-row flex-wrap gap-2">
         {elements.map((elem, index) => (
           <span key={index}>{elem}</span>
         ))}
@@ -84,15 +88,22 @@ const DayCard = ({ scheduleItem, truckData }) => {
 
   return (
     <Card>
-      <Card.Img src={getTruckImageUrl(scheduleItem.truck_id)} />
-      <Card.Body>
+      <Card.Img
+        src={getTruckImageUrl(scheduleItem.truck_id)}
+        alt="Truck header"
+      />
+      <Card.Body className="d-flex flex-column gap-2">
         <div className="row">
           <div className="col">
-            <Card.Title>{getTruckName(scheduleItem.truck_id)}</Card.Title>
+            <Card.Title className="font-oswald">
+              {getTruckName(scheduleItem.truck_id)}
+            </Card.Title>
           </div>
-          <div className="col">{getTruckFoodType(scheduleItem.truck_id)}</div>
+          <div className="col d-flex justify-content-end align-items-center">
+            {getTruckFoodType(scheduleItem.truck_id)}
+          </div>
         </div>
-        <div className="row">
+        <div className="row font-nunito">
           <div className="col d-flex flex-column">
             {getTruckTimes()}
             {getTruckSocials(scheduleItem.truck_id)}
@@ -110,12 +121,6 @@ const DayCard = ({ scheduleItem, truckData }) => {
 };
 
 export const DayCards = ({ dayInfo, truckData }) => {
-  const routerNavigate = useNavigate();
-
-  const handleNavigationClick = (truckId) => {
-    routerNavigate(`/trucks/${truckId}`);
-  };
-
   return (
     <>
       {dayInfo === undefined || null || dayInfo.length === 0 ? (

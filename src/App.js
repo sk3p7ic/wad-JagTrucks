@@ -11,7 +11,7 @@ import { TruckViewPage } from "./pages/trucks/TruckView";
 function App() {
   return (
     <NavProvider>
-      <div className="min-vh-100 d-flex flex-column">
+      <div className="vh-100 d-flex flex-column">
         <Navbar />
         <div className="flex-grow-1 overflow-auto d-flex flex-column">
           <Routes>
