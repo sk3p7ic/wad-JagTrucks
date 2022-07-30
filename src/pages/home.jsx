@@ -1,9 +1,6 @@
-import Container from "react-bootstrap/esm/Container";
-import Row from "react-bootstrap/esm/Row";
-import Col from "react-bootstrap/esm/Col";
-import Button from "react-bootstrap/Button";
-//import taco from '../../public/img/Tacos.png';
-function blockofTitle() {
+import { Button } from "react-bootstrap";
+
+export const HomePage = () => {
   return (
     <div className="flex-grow-1 d-flex flex-row justify-content-between align-items-center">
       <div className="container-lg">
@@ -49,21 +46,4 @@ function blockofTitle() {
       </div>
     </div>
   );
-}
-
-/*const exampleFunc = () => {
-  return (
-    <div className="d-flex flex-row justify-content-between">
-      <div className="display-1">Content 1</div>
-      <div className="display-1">Content 2</div>
-    </div>
-  );
-};*/
-
-export const HomePage = () => {
-  return blockofTitle();
 };
-
-// npm start
-//font-oswald
-//font-vollkorn
