@@ -8,8 +8,7 @@ import { TrucksPage } from "./pages/Trucks";
 import { NonexistentPage } from "./pages/PageNotFound";
 import { TruckViewPage } from "./pages/trucks/TruckView";
 import {FoodTruckLogin} from "./pages/login";
-import { NewFoodTruck } from "./pages/newUser";
-
+import {NewFoodTruck} from "./pages/newUser";
 function App() {
   return (
     <NavProvider>

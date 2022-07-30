@@ -1,4 +1,5 @@
 import { Container, Button, Form} from 'react-bootstrap';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 export function FoodTruckLogin(){
     return(
@@ -25,3 +26,5 @@ export function FoodTruckLogin(){
     );
 }
 {/*We also need a log out button. Can we make it dynamic to also allow for a button to swap to signout?*/}
+{/* Probably making this way more complicated than needed but should we also have a list going that can grow as we 
+get more food trucks coming in or does the database take care of all of that? */}
