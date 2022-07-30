@@ -9,42 +9,55 @@ export const TrucksPage = () => {
   const { setCurrentPage } = useNavigation();
   const [baseTrucks, setBaseTrucks] = useState();
   const [trucks, setTrucks] = useState();
-  const [filter, setFilter] = useState({ filter: "none", value: "" });
+  const [filter, setFilter] = useState([{ filter: "none", value: "" }]);
 
   useEffect(() => {
-    switch (filter.filter) {
-      // Filter by search string
-      case "string":
-        let allFilteredTrucks = []; // Stores the trucks found by the filter
-        // Search each term entered in the search bar, separated by spaces
-        filter.value
-          .toLocaleLowerCase()
-          .split(" ")
-          .forEach((val) => {
-            // Search the truck names for the given value
-            const filteredTrucks = baseTrucks.filter((filterTruck) =>
-              filterTruck?.name.toLowerCase().includes(val)
-            );
-            // Add the truck to the array of found trucks
-            allFilteredTrucks = allFilteredTrucks.concat(filteredTrucks);
-          });
-        // Convert to Set to remove duplicate entries and then back to array
-        setTrucks(Array.from(new Set(allFilteredTrucks)));
-        break;
+    filter.forEach((partialFilter) => {
+      switch (partialFilter.filter) {
+        // Filter by search string
+        case "string":
+          let allFilteredTrucks = []; // Stores the trucks found by the filter
+          // Search each term entered in the search bar, separated by spaces
+          partialFilter.value
+            .toLocaleLowerCase()
+            .split(" ")
+            .forEach((val) => {
+              // Search the truck names for the given value
+              const filteredTrucks = baseTrucks.filter((filterTruck) =>
+                filterTruck?.name.toLowerCase().includes(val)
+              );
+              // Add the truck to the array of found trucks
+              allFilteredTrucks = allFilteredTrucks.concat(filteredTrucks);
+            });
+          // Convert to Set to remove duplicate entries and then back to array
+          setTrucks(Array.from(new Set(allFilteredTrucks)));
+          break;
 
-      // Default (setup the view)
-      default:
-        getAllTrucks().then((truckData) => {
-          setBaseTrucks(truckData);
-          setTrucks(truckData);
-        });
-        break;
-    }
+        // Default (setup the view)
+        default:
+          getAllTrucks().then((truckData) => {
+            setBaseTrucks(truckData);
+            setTrucks(truckData);
+          });
+          break;
+      }
+    });
     // eslint-disable-next-line
   }, [filter]);
 
   const changeFilter = (filterMode, value) => {
-    setFilter({ filter: value !== "" ? filterMode : "none", value: value });
+    if (filter[0].filter !== "none" && filterMode !== "string") {
+      const newFilterAddition = [
+        { filter: value !== "" ? filterMode : "none", value: value },
+      ];
+      let newFilter = filter;
+      newFilter.concat(newFilterAddition);
+      setFilter(newFilter);
+    } else if (filterMode === "string") {
+      setFilter([{ filter: "string", value: value }]);
+    } else {
+      setFilter([{ filter: "none", value: "" }]);
+    }
   };
 
   useEffect(() => {
