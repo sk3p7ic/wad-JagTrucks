@@ -4,6 +4,7 @@ import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import { useNavigation } from "../contexts/NavigationContext";
+import { addUser } from "../util/db/users";
 
 const initialFormValues = {
   firstName: "",
@@ -88,6 +89,7 @@ export function NewFoodTruck() {
     }
 
     setValidated(true);
+    addUser(formValues);
   };
 
   return (
@@ -195,6 +197,7 @@ export function NewFoodTruck() {
                 checked={showPassword}
                 onChange={() => {
                   const showPass = showPassword;
+                  console.log(formValues);
                   setShowPassword(!showPass);
                 }}
               />
