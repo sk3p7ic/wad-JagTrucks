@@ -1,8 +1,9 @@
 import { Container, Button, Form } from "react-bootstrap";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import { useNavigation } from "../contexts/NavigationContext";
 
 const initialFormValues = {
   firstName: "",
@@ -17,6 +18,12 @@ const initialFormValues = {
 };
 
 export function NewFoodTruck() {
+  const { setCurrentPage } = useNavigation();
+  useEffect(() => {
+    const unsubscribe = setCurrentPage("/login");
+    return unsubscribe;
+  }, [setCurrentPage]);
+
   const [validated, setValidated] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const confirmPasswordRef = useRef();

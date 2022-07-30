@@ -38,7 +38,11 @@ export const Navbar = () => {
         </Nav>
         <hr className="d-lg-none" />
         <Nav>
-          <Nav.Link href="/login" className="ms-lg-auto">
+          <Nav.Link
+            href="/login"
+            className="ms-lg-auto"
+            active={currentPage === "/login"}
+          >
             Login
           </Nav.Link>
         </Nav>
