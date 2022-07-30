@@ -1,33 +1,64 @@
 import { Container, Button, Form } from "react-bootstrap";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { propTypes } from "react-bootstrap/esm/Image";
 import { useNavigation } from "../contexts/NavigationContext";
+import { signIn } from "../util/db/users";
+const userInfo = {
+  authName: "",
+  password: "",
+};
 
 export function FoodTruckLogin() {
   const { setCurrentPage } = useNavigation();
+
+  const [loginInfo, setloginInfo] = useState(userInfo);
 
   useEffect(() => {
     const unsubscribe = setCurrentPage("/login");
     return unsubscribe;
   }, [setCurrentPage]);
 
+  function updateValue(valueName, value) {
+    const Info = loginInfo;
+    if (valueName === "authName") setloginInfo({ ...Info, authName: value });
+    else setloginInfo({ ...Info, password: value });
+  }
+
   return (
     <Container className=" d-flex flex-column justify-content-center align-items-center">
       <Form style={{ width: "fit-content" }}>
         {" "}
-        {/*className = "w-50vh"*/}
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+          <Form.Control
+            type="email"
+            placeholder="Enter email"
+            value={loginInfo.authName}
+            onChange={(e) => {
+              updateValue("authName", e.target.value);
+            }}
+          />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+          <Form.Control
+            type="password"
+            placeholder="Password"
+            value={loginInfo.password}
+            onChange={(e) => {
+              updateValue("password", e.target.value);
+            }}
+          />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          onClick={() => {
+            signIn(loginInfo);
+          }}
+        >
           Submit
         </Button>{" "}
         <Button variant="primary" size="md" href="/newUser">
