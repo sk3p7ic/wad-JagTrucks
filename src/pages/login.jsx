@@ -24,3 +24,4 @@ export function FoodTruckLogin(){
     </Container>
     );
 }
+{/*We also need a log out button. Can we make it dynamic to also allow for a button to swap to signout?*/}
