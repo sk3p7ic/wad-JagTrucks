@@ -174,6 +174,7 @@ export function NewFoodTruck() {
               placeholder="Password"
               required
               value={formValues.password}
+              className="pWord"
               onChange={(e) => updateValue("password", e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
@@ -187,12 +188,14 @@ export function NewFoodTruck() {
               placeholder="Password"
               required
               value={formValues.confirmPassword}
+              className="conPWord"
               onChange={(e) => updateValue("confirmPassword", e.target.value)}
               ref={confirmPasswordRef}
             />
+            if(pWord!= conPWord) {/* Shortcut for password checker? */}{
             <Form.Control.Feedback type="invalid">
               Passwords do not match.
-            </Form.Control.Feedback>
+            </Form.Control.Feedback>}
           </Form.Group>
         </Row>
         <Form.Group className="mb-3">
