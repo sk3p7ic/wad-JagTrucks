@@ -139,7 +139,7 @@ export function NewFoodTruck() {
           <Form.Group as={Col} md="6" controlId="validationCustom03">
             <Form.Label>Email</Form.Label>
             <Form.Control
-              type="text"
+              type="email"
               placeholder="companyName@example.com"
               required
               value={formValues.email}
