@@ -81,6 +81,7 @@ export function NewFoodTruck() {
 
     setValidated(true);
   };
+  
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center">
       <h1>Welcome to the JagTrucks Website!</h1>
@@ -213,3 +214,5 @@ export function NewFoodTruck() {
     </Container>
   );
 }
+{/*Looking at the website we need JS for the site to work. At the moment the whole screen 
+comes out as blank*/}
