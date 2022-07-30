@@ -12,6 +12,7 @@ export const TrucksPage = () => {
   const [filter, setFilter] = useState([{ filter: "none", value: "" }]);
 
   useEffect(() => {
+    console.log(filter);
     filter.forEach((partialFilter) => {
       switch (partialFilter.filter) {
         // Filter by search string

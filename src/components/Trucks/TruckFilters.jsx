@@ -1,9 +1,18 @@
 import { useState } from "react";
-import { Form, InputGroup, FloatingLabel, Button } from "react-bootstrap";
+import {
+  Form,
+  InputGroup,
+  FloatingLabel,
+  Button,
+  Offcanvas,
+} from "react-bootstrap";
+import { FaFilter } from "react-icons/fa";
 import "./TruckFilters.css";
 
 export const TruckFilters = ({ onFilterChangeCallback }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [showFilterForm, setShowFilterForm] = useState(false);
+  const [allowsDiningDollars, setAllowsDiningDollars] = useState(false);
 
   const handleSearchUpdate = (event) => {
     onFilterChangeCallback("string", event.target.value);
@@ -15,8 +24,14 @@ export const TruckFilters = ({ onFilterChangeCallback }) => {
     setSearchValue("");
   };
 
+  const handleAllowDiningDollarUpdate = () => {
+    const allows = allowsDiningDollars;
+    setAllowsDiningDollars(!allows);
+    onFilterChangeCallback("dollars", allows);
+  };
+
   return (
-    <div className="p-4 d-flex flex-column flex-lg-row">
+    <div className="p-4 d-flex flex-column flex-lg-row align-items-center gap-4">
       <InputGroup className="search-container">
         <FloatingLabel controlId="truckNameSearch" label="Search">
           <Form.Control
@@ -32,6 +47,34 @@ export const TruckFilters = ({ onFilterChangeCallback }) => {
           <Button onClick={() => clearSearch()}>Clear</Button>
         </InputGroup.Text>
       </InputGroup>
+      <div className="position-relative">
+        <FaFilter
+          size={48}
+          onClick={() => {
+            setShowFilterForm(true);
+          }}
+          style={{ zIndex: 2020 }}
+        />
+        <Offcanvas
+          show={showFilterForm}
+          onHide={() => {
+            setShowFilterForm(false);
+          }}
+        >
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Filters</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Form.Check
+              type="switch"
+              id="accepts-dining-dollars-switch"
+              label="Accepts Dining Dollars?"
+              checked={allowsDiningDollars}
+              onChange={handleAllowDiningDollarUpdate}
+            />
+          </Offcanvas.Body>
+        </Offcanvas>
+      </div>
     </div>
   );
 };
