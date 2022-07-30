@@ -61,9 +61,9 @@ export function NewFoodTruck() {
     return valid;
   };
   if (!checkPassword()) {
-    confirmPasswordRef.current.classList.add("is-invalid");
+    confirmPasswordRef?.current?.classList.add("is-invalid");
   } else {
-    confirmPasswordRef.current.classList.remove("is-invalid");
+    confirmPasswordRef?.current?.classList.remove("is-invalid");
   }
 
   const handleSubmit = (event) => {
@@ -211,5 +211,7 @@ export function NewFoodTruck() {
     </Container>
   );
 }
-{/*Looking at the website we need JS for the site to work. At the moment the whole screen 
-comes out as blank*/}
+{
+  /*Looking at the website we need JS for the site to work. At the moment the whole screen 
+comes out as blank*/
+}
