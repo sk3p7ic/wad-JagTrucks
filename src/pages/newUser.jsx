@@ -26,6 +26,7 @@ export function NewFoodTruck() {
 
   const [validated, setValidated] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
+  const [showPassword, setShowPassword] = useState(false);
   const confirmPasswordRef = useRef();
 
   const updateValue = (valueName, value) => {
@@ -178,7 +179,7 @@ export function NewFoodTruck() {
           <Form.Group as={Col} md="6" controlId="validationCustom05">
             <Form.Label>Password</Form.Label>
             <Form.Control
-              type="text"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               required
               value={formValues.password}
@@ -187,11 +188,22 @@ export function NewFoodTruck() {
             <Form.Control.Feedback type="invalid">
               Please provide a valid password.
             </Form.Control.Feedback>
+            <Form.Group>
+              <Form.Check
+                type="switch"
+                label="Show password"
+                checked={showPassword}
+                onChange={() => {
+                  const showPass = showPassword;
+                  setShowPassword(!showPass);
+                }}
+              />
+            </Form.Group>
           </Form.Group>
           <Form.Group as={Col} md="6" controlId="validationCustom05">
             <Form.Label>Please re-enter your password</Form.Label>
             <Form.Control
-              type="text"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               required
               value={formValues.confirmPassword}
