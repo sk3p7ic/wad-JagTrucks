@@ -10,7 +10,7 @@ const userInfo = {
 };
 
 export function FoodTruckLogin() {
-  const { jagTrucksAuth, login } = useJagTrucksAuthentication();
+  const { login } = useJagTrucksAuthentication();
   const { setCurrentPage } = useNavigation();
   const routerNavigate = useNavigate();
 
@@ -18,7 +18,6 @@ export function FoodTruckLogin() {
 
   useEffect(() => {
     setCurrentPage("/login");
-    if (jagTrucksAuth !== null) routerNavigate("/user/home");
     // eslint-disable-next-line
   }, [setCurrentPage]);
 

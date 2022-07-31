@@ -4,9 +4,10 @@ import { useJagTrucksAuthentication } from "../../contexts/AuthenticationContext
 export const RequireJagTrucksAuth = ({ children }) => {
   const { jagTrucksAuth } = useJagTrucksAuthentication();
 
-  if (jagTrucksAuth.user === null) {
+  if (jagTrucksAuth === undefined || jagTrucksAuth === null) {
     return <Navigate to="/login" replace />;
   } else {
+    console.log(jagTrucksAuth);
     return children;
   }
 };
