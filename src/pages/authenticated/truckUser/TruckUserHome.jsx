@@ -1,4 +1,5 @@
 import { useJagTrucksAuthentication } from "../../../contexts/AuthenticationContext";
+import { AccountActivePage } from "./TruckUserDashboard";
 
 const AccountPendingPage = () => {
   return (
@@ -29,10 +30,6 @@ const AccountInvalidPage = () => {
       </h1>
     </div>
   );
-};
-
-const AccountActivePage = () => {
-  return <div className="flex-grow-1">Active</div>;
 };
 
 export const TruckUserHome = () => {
