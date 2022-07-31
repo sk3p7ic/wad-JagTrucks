@@ -3,9 +3,11 @@ import React, { useEffect, useRef, useState } from "react";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
+import { useNavigate } from "react-router-dom";
 import { useNavigation } from "../contexts/NavigationContext";
 import { addUser } from "../util/db/users";
 import { TermsAndConditionsModal } from "../components/AuthPages/TermsCondsModal";
+import { useJagTrucksAuthentication } from "../contexts/AuthenticationContext";
 
 const initialFormValues = {
   firstName: "",
@@ -20,10 +22,14 @@ const initialFormValues = {
 };
 
 export function NewFoodTruck() {
+  const { jagTrucksAuth, setJagTrucksAuth } = useJagTrucksAuthentication();
+  const routerNavigate = useNavigate();
   const { setCurrentPage } = useNavigation();
   useEffect(() => {
-    const unsubscribe = setCurrentPage("/login");
-    return unsubscribe;
+    setCurrentPage("/login");
+
+    if (jagTrucksAuth?._id) routerNavigate("/user/home");
+    // eslint-disable-next-line
   }, [setCurrentPage]);
 
   const [validated, setValidated] = useState(false);
@@ -92,8 +98,10 @@ export function NewFoodTruck() {
 
     setValidated(true);
     addUser(formValues).then((response) => {
-      if (response.success === false) {
+      if (response.success === false || response?.user === null) {
         setCreationErrorText(response.reason);
+      } else {
+        setJagTrucksAuth(response.user);
       }
     });
   };

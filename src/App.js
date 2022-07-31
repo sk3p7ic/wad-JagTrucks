@@ -9,7 +9,11 @@ import { NonexistentPage } from "./pages/PageNotFound";
 import { TruckViewPage } from "./pages/trucks/TruckView";
 import { FoodTruckLogin } from "./pages/login";
 import { NewFoodTruck } from "./pages/newUser";
-import { JagTrucksAuthenticationProvider } from "./contexts/AuthenticationContext";
+import {
+  JagTrucksAuthenticationProvider,
+  RequireJagTrucksAuth,
+} from "./contexts/AuthenticationContext";
+import { TruckUserHome } from "./pages/authenticated/truckUser/TruckUserHome";
 function App() {
   return (
     <NavProvider>
@@ -25,6 +29,23 @@ function App() {
               <Route path="trucks/:truckId" element={<TruckViewPage />} />
               <Route path="login" element={<FoodTruckLogin />} />
               <Route path="newUser" element={<NewFoodTruck />} />
+              <Route
+                path="user"
+                element={
+                  <RequireJagTrucksAuth>
+                    <TruckUserHome />
+                  </RequireJagTrucksAuth>
+                }
+              >
+                <Route
+                  path="home"
+                  element={
+                    <RequireJagTrucksAuth>
+                      <TruckUserHome />
+                    </RequireJagTrucksAuth>
+                  }
+                />
+              </Route>
               <Route path="*" element={<NonexistentPage />} />
             </Routes>
           </JagTrucksAuthenticationProvider>

@@ -1,28 +1,41 @@
 import { Container, Button, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { useNavigate } from "react-router-dom";
 import { useNavigation } from "../contexts/NavigationContext";
 import { signIn } from "../util/db/users";
+import { useJagTrucksAuthentication } from "../contexts/AuthenticationContext";
 const userInfo = {
   authName: "",
   password: "",
 };
 
 export function FoodTruckLogin() {
+  const { jagTrucksAuth, setJagTrucksAuth } = useJagTrucksAuthentication();
   const { setCurrentPage } = useNavigation();
+  const routerNavigate = useNavigate();
 
   const [loginInfo, setloginInfo] = useState(userInfo);
 
   useEffect(() => {
-    const unsubscribe = setCurrentPage("/login");
-    return unsubscribe;
-  }, [setCurrentPage]);
+    setCurrentPage("/login");
+    if (jagTrucksAuth?._id) routerNavigate("/user/home");
+    // eslint-disable-next-line
+  }, [setCurrentPage, jagTrucksAuth]);
 
   function updateValue(valueName, value) {
     const Info = loginInfo;
     if (valueName === "authName") setloginInfo({ ...Info, authName: value });
     else setloginInfo({ ...Info, password: value });
   }
+
+  const handlleSignIn = () => {
+    signIn(loginInfo).then((response) => {
+      if (response.valid) {
+        console.log("hi");
+        setJagTrucksAuth(response.user);
+      }
+    });
+  };
 
   return (
     <Container className=" d-flex flex-column justify-content-center align-items-center">
@@ -56,7 +69,7 @@ export function FoodTruckLogin() {
         <Button
           variant="primary"
           onClick={() => {
-            signIn(loginInfo);
+            handlleSignIn();
           }}
         >
           Submit
