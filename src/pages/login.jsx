@@ -73,7 +73,7 @@ export function FoodTruckLogin() {
         >
           Submit
         </Button>{" "}
-        <Button variant="primary" size="md" href="/newUser">
+        <Button variant="outline-primary" size="md" href="/newUser">
           New User
         </Button>
       </Form>
