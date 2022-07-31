@@ -7,24 +7,27 @@ import { SchedulePage } from "./pages/Schedule";
 import { TrucksPage } from "./pages/Trucks";
 import { NonexistentPage } from "./pages/PageNotFound";
 import { TruckViewPage } from "./pages/trucks/TruckView";
-import {FoodTruckLogin} from "./pages/login";
-import {NewFoodTruck} from "./pages/newUser";
+import { FoodTruckLogin } from "./pages/login";
+import { NewFoodTruck } from "./pages/newUser";
+import { JagTrucksAuthenticationProvider } from "./contexts/AuthenticationContext";
 function App() {
   return (
     <NavProvider>
       <div className="vh-100 d-flex flex-column">
         <Navbar />
         <div className="flex-grow-1 overflow-auto d-flex flex-column">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="home" element={<HomePage />} />
-            <Route path="schedule" element={<SchedulePage />} />
-            <Route path="trucks" element={<TrucksPage />} />
-            <Route path="trucks/:truckId" element={<TruckViewPage />} />
-            <Route path="login" element={<FoodTruckLogin />}/>
-            <Route path="newUser" element={<NewFoodTruck />}/>
-            <Route path="*" element={<NonexistentPage />} />
-          </Routes>
+          <JagTrucksAuthenticationProvider>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="home" element={<HomePage />} />
+              <Route path="schedule" element={<SchedulePage />} />
+              <Route path="trucks" element={<TrucksPage />} />
+              <Route path="trucks/:truckId" element={<TruckViewPage />} />
+              <Route path="login" element={<FoodTruckLogin />} />
+              <Route path="newUser" element={<NewFoodTruck />} />
+              <Route path="*" element={<NonexistentPage />} />
+            </Routes>
+          </JagTrucksAuthenticationProvider>
         </div>
       </div>
     </NavProvider>
