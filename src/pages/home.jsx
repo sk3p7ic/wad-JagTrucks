@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { Button } from "react-bootstrap";
+import { useNavigation } from "../contexts/NavigationContext";
 import "./Home.css";
 
 export const HomePage = () => {
+  const { setCurrentPage } = useNavigation();
+
+  useEffect(() => {
+    setCurrentPage("/");
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="flex-grow-1 d-flex flex-row justify-content-between align-items-center">
       <div className="container-lg">
