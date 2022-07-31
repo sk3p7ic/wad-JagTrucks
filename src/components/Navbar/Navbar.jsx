@@ -1,11 +1,14 @@
 import { Nav, Navbar as BSNavbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useJagTrucksAuthentication } from "../../contexts/AuthenticationContext";
 import { useNavigation } from "../../contexts/NavigationContext";
 import PageLinkData from "../../data/pages.json";
+import { UserNavbarSection } from "../TruckUserPages/UserNavabarSection";
 import "./Navbar.css";
 
 export const Navbar = () => {
   const { currentPage } = useNavigation();
+  const { jagTrucksAuth } = useJagTrucksAuthentication();
 
   return (
     <BSNavbar
@@ -35,16 +38,20 @@ export const Navbar = () => {
           })}
         </Nav>
         <hr className="d-lg-none" />
-        <Nav className="ms-lg-auto">
-          <Link
-            to="/login"
-            className={`text-dark ${
-              currentPage === "/login" ? "active" : "text-decoration-none"
-            }`}
-          >
-            Login
-          </Link>
-        </Nav>
+        {jagTrucksAuth === undefined || jagTrucksAuth === null ? (
+          <Nav className="ms-lg-auto">
+            <Link
+              to="/login"
+              className={`text-dark ${
+                currentPage === "/login" ? "active" : "text-decoration-none"
+              }`}
+            >
+              Login
+            </Link>
+          </Nav>
+        ) : (
+          <UserNavbarSection />
+        )}
       </BSNavbar.Collapse>
     </BSNavbar>
   );
