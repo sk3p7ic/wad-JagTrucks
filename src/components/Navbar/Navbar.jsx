@@ -27,6 +27,7 @@ export const Navbar = () => {
                     ? "active"
                     : "text-decoration-none"
                 }`}
+                key={index}
               >
                 {linkData.pageName}
               </Link>
