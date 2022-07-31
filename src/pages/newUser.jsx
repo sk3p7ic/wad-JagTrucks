@@ -22,13 +22,11 @@ const initialFormValues = {
 };
 
 export function NewFoodTruck() {
-  const { jagTrucksAuth, setJagTrucksAuth } = useJagTrucksAuthentication();
+  const { login } = useJagTrucksAuthentication();
   const routerNavigate = useNavigate();
   const { setCurrentPage } = useNavigation();
   useEffect(() => {
     setCurrentPage("/login");
-
-    if (jagTrucksAuth?._id) routerNavigate("/user/home");
     // eslint-disable-next-line
   }, [setCurrentPage]);
 
@@ -101,7 +99,8 @@ export function NewFoodTruck() {
       if (response.success === false || response?.user === null) {
         setCreationErrorText(response.reason);
       } else {
-        setJagTrucksAuth(response.user);
+        login(response.user);
+        routerNavigate("/user/home");
       }
     });
   };
