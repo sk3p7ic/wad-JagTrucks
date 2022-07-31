@@ -197,7 +197,6 @@ export function NewFoodTruck() {
                 checked={showPassword}
                 onChange={() => {
                   const showPass = showPassword;
-                  console.log(formValues);
                   setShowPassword(!showPass);
                 }}
               />
