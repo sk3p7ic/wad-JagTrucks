@@ -7,7 +7,6 @@ export const RequireJagTrucksAuth = ({ children }) => {
   if (jagTrucksAuth === undefined || jagTrucksAuth === null) {
     return <Navigate to="/login" replace />;
   } else {
-    console.log(jagTrucksAuth);
     return children;
   }
 };
