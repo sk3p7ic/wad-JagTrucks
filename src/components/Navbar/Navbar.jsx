@@ -1,17 +1,11 @@
 import { Nav, Navbar as BSNavbar } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigation } from "../../contexts/NavigationContext";
 import PageLinkData from "../../data/pages.json";
 import "./Navbar.css";
 
 export const Navbar = () => {
-  const { currentPage, setCurrentPage } = useNavigation();
-  const routerNavigate = useNavigate();
-
-  const navigateTo = (path) => {
-    setCurrentPage(path);
-    routerNavigate(path, { replace: true });
-  };
+  const { currentPage } = useNavigation();
 
   return (
     <BSNavbar
@@ -26,25 +20,29 @@ export const Navbar = () => {
         <Nav className="me-auto">
           {PageLinkData.map((linkData, index) => {
             return (
-              <Nav.Link
-                active={currentPage === linkData.pagePath}
-                onClick={() => navigateTo(linkData.pagePath)}
-                key={index}
+              <Link
+                to={linkData.pagePath}
+                className={`text-dark nav-link ${
+                  currentPage === linkData.pagePath
+                    ? "active"
+                    : "text-decoration-none"
+                }`}
               >
                 {linkData.pageName}
-              </Nav.Link>
+              </Link>
             );
           })}
         </Nav>
         <hr className="d-lg-none" />
-        <Nav>
-          <Nav.Link
-            href="/login"
-            className="ms-lg-auto"
-            active={currentPage === "/login"}
+        <Nav className="ms-lg-auto">
+          <Link
+            to="/login"
+            className={`text-dark ${
+              currentPage === "/login" ? "active" : "text-decoration-none"
+            }`}
           >
             Login
-          </Nav.Link>
+          </Link>
         </Nav>
       </BSNavbar.Collapse>
     </BSNavbar>
