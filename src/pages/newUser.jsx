@@ -30,6 +30,7 @@ export function NewFoodTruck() {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [showPassword, setShowPassword] = useState(false);
   const confirmPasswordRef = useRef();
+  const [creationErrorText, setCreationErrorText] = useState("");
 
   const updateValue = (valueName, value) => {
     let currentValues = formValues;
@@ -90,7 +91,11 @@ export function NewFoodTruck() {
     }
 
     setValidated(true);
-    addUser(formValues);
+    addUser(formValues).then((response) => {
+      if (response.success === false) {
+        setCreationErrorText(response.reason);
+      }
+    });
   };
 
   return (
@@ -235,11 +240,12 @@ export function NewFoodTruck() {
         >
           Submit form
         </Button>
+        {creationErrorText !== "" ? (
+          <h1 className="text-error">{creationErrorText}</h1>
+        ) : (
+          <></>
+        )}
       </Form>
     </Container>
   );
-}
-{
-  /*Looking at the website we need JS for the site to work. At the moment the whole screen 
-comes out as blank*/
 }
