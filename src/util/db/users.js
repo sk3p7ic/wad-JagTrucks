@@ -5,7 +5,6 @@ export const addUser = async (data) => {
     headers: { "Content-Type": "application/json" },
   });
   console.log(res);
-  console.log(data);
   return false;
 };
 

@@ -95,7 +95,7 @@ export function NewFoodTruck() {
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center">
       <h1>Welcome to the JagTrucks Website!</h1>
-      <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Form noValidate validated={validated}>
         <Row className="mb-3">
           <Form.Group as={Col} md="4" controlId="validationCustom01">
             <Form.Label>First name</Form.Label>
@@ -228,7 +228,13 @@ export function NewFoodTruck() {
             onChange={(e) => updateValue("termCondAgree", e.target.value)}
           />
         </Form.Group>
-        <Button type="submit">Submit form</Button>
+        <Button
+          onClick={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          Submit form
+        </Button>
       </Form>
     </Container>
   );
