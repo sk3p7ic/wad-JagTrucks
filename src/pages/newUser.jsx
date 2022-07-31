@@ -103,7 +103,7 @@ export function NewFoodTruck() {
       <h1>Welcome to the JagTrucks Website!</h1>
       <Form noValidate validated={validated}>
         <Row className="mb-3">
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
+          <Form.Group as={Col} md="4" controlId="firstNameControl">
             <Form.Label>First name</Form.Label>
             <Form.Control
               required
@@ -114,7 +114,7 @@ export function NewFoodTruck() {
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
+          <Form.Group as={Col} md="4" controlId="lastNameControl">
             <Form.Label>Last name</Form.Label>
             <Form.Control
               required
@@ -125,7 +125,7 @@ export function NewFoodTruck() {
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+          <Form.Group as={Col} md="4" controlId="usernameControl">
             <Form.Label>Username</Form.Label>
             <InputGroup hasValidation>
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
@@ -144,7 +144,7 @@ export function NewFoodTruck() {
           </Form.Group>
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} md="6" controlId="validationCustom03">
+          <Form.Group as={Col} md="6" controlId="emailControl">
             <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
@@ -157,7 +157,7 @@ export function NewFoodTruck() {
               Please provide a valid email.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
+          <Form.Group as={Col} md="3" controlId="phoneControl">
             <Form.Label>Phone Number</Form.Label>
             <Form.Control
               type="text"
@@ -170,7 +170,7 @@ export function NewFoodTruck() {
               Please provide a valid phone number.
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
+          <Form.Group as={Col} md="3" controlId="truckNameControl">
             <Form.Label>Truck Name</Form.Label>
             <Form.Control
               type="text"
@@ -184,7 +184,7 @@ export function NewFoodTruck() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group as={Col} md="6" controlId="validationCustom05">
+          <Form.Group as={Col} md="6" controlId="passwordControl">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type={showPassword ? "text" : "password"}
@@ -208,7 +208,7 @@ export function NewFoodTruck() {
               />
             </Form.Group>
           </Form.Group>
-          <Form.Group as={Col} md="6" controlId="validationCustom05">
+          <Form.Group as={Col} md="6" controlId="confirmPasswordControl">
             <Form.Label>Please re-enter your password</Form.Label>
             <Form.Control
               type={showPassword ? "text" : "password"}
