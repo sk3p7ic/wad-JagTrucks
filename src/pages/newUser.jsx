@@ -5,6 +5,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Row from "react-bootstrap/Row";
 import { useNavigation } from "../contexts/NavigationContext";
 import { addUser } from "../util/db/users";
+import { TermsAndConditionsModal } from "../components/AuthPages/TermsCondsModal";
 
 const initialFormValues = {
   firstName: "",
@@ -217,15 +218,15 @@ export function NewFoodTruck() {
             </Form.Control.Feedback>
           </Form.Group>
         </Row>
-        <Form.Group className="mb-3">
+        <Form.Group className="mb-3 d-flex gap-2">
           <Form.Check
             required
-            label="Agree to terms and conditions"
             feedback="You must agree before submitting."
             feedbackType="invalid"
             value={formValues.termCondAgree}
             onChange={(e) => updateValue("termCondAgree", e.target.value)}
           />
+          <TermsAndConditionsModal />
         </Form.Group>
         <Button
           onClick={(e) => {
