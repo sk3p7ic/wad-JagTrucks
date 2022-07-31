@@ -10,7 +10,7 @@ const userInfo = {
 };
 
 export function FoodTruckLogin() {
-  const { jagTrucksAuth, setJagTrucksAuth } = useJagTrucksAuthentication();
+  const { jagTrucksAuth, login } = useJagTrucksAuthentication();
   const { setCurrentPage } = useNavigation();
   const routerNavigate = useNavigate();
 
@@ -18,9 +18,9 @@ export function FoodTruckLogin() {
 
   useEffect(() => {
     setCurrentPage("/login");
-    if (jagTrucksAuth?._id) routerNavigate("/user/home");
+    if (jagTrucksAuth !== null) routerNavigate("/user/home");
     // eslint-disable-next-line
-  }, [setCurrentPage, jagTrucksAuth]);
+  }, [setCurrentPage]);
 
   function updateValue(valueName, value) {
     const Info = loginInfo;
@@ -31,8 +31,8 @@ export function FoodTruckLogin() {
   const handlleSignIn = () => {
     signIn(loginInfo).then((response) => {
       if (response.valid) {
-        console.log("hi");
-        setJagTrucksAuth(response.user);
+        login(response.user);
+        routerNavigate("/user/home");
       }
     });
   };

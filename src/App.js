@@ -9,18 +9,16 @@ import { NonexistentPage } from "./pages/PageNotFound";
 import { TruckViewPage } from "./pages/trucks/TruckView";
 import { FoodTruckLogin } from "./pages/login";
 import { NewFoodTruck } from "./pages/newUser";
-import {
-  JagTrucksAuthenticationProvider,
-  RequireJagTrucksAuth,
-} from "./contexts/AuthenticationContext";
+import { JagTrucksAuthenticationProvider } from "./contexts/AuthenticationContext";
+import { RequireJagTrucksAuth } from "./pages/authenticated/RequireJagTrucksAuth";
 import { TruckUserHome } from "./pages/authenticated/truckUser/TruckUserHome";
 function App() {
   return (
-    <NavProvider>
-      <div className="vh-100 d-flex flex-column">
-        <Navbar />
-        <div className="flex-grow-1 overflow-auto d-flex flex-column">
-          <JagTrucksAuthenticationProvider>
+    <JagTrucksAuthenticationProvider>
+      <NavProvider>
+        <div className="vh-100 d-flex flex-column">
+          <Navbar />
+          <div className="flex-grow-1 overflow-auto d-flex flex-column">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="home" element={<HomePage />} />
@@ -48,10 +46,10 @@ function App() {
               </Route>
               <Route path="*" element={<NonexistentPage />} />
             </Routes>
-          </JagTrucksAuthenticationProvider>
+          </div>
         </div>
-      </div>
-    </NavProvider>
+      </NavProvider>
+    </JagTrucksAuthenticationProvider>
   );
 }
 export default App;

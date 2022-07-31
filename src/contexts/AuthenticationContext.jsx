@@ -9,21 +9,17 @@ export const useJagTrucksAuthentication = () =>
 export const JagTrucksAuthenticationProvider = ({ children }) => {
   const [jagTrucksAuth, setJagTrucksAuth] = useState();
 
+  const login = (user) => {
+    setJagTrucksAuth(user);
+  };
+
+  const logout = () => {
+    setJagTrucksAuth(null);
+  };
+
   return (
-    <AuthenticationContext.Provider value={{ jagTrucksAuth, setJagTrucksAuth }}>
+    <AuthenticationContext.Provider value={{ jagTrucksAuth, login, logout }}>
       {children}
     </AuthenticationContext.Provider>
   );
-};
-
-export const RequireJagTrucksAuth = ({ children }) => {
-  //const { jagTrucksAuth } = useJagTrucksAuthentication();
-
-  // TODO: Fix this code. It is BROKEN!
-  //if (jagTrucksAuth.user === undefined) {
-  //  return <Navigate to="/login" replace />;
-  //} else {
-  //  return children;
-  //}
-  return children;
 };
