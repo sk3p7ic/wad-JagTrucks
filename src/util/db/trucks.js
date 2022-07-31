@@ -1,4 +1,4 @@
-const getTruckDataFromId = async (truckId) => {
+export const getTruckDataFromId = async (truckId) => {
   const res = await fetch(`/api/get/trucks/${truckId}`);
   const truck = await res.json();
   return truck;
