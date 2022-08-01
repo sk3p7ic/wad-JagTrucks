@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
+import { TruckMenuHeader } from "../../components/Trucks/TruckMenuHeader";
 import { useNavigation } from "../../contexts/NavigationContext";
 import { getTruckDataFromId, getTruckMenuFromId } from "../../util/db/trucks";
 import { TruckMenuView } from "./TruckMenuView";
@@ -23,11 +24,15 @@ export const TruckViewPage = () => {
   }, [truckId]);
 
   return (
-    <Container>
+    <Container className="d-flex flex-column gap-4">
       <Link to="/trucks">
         <BsArrowLeftCircleFill size="48" />
       </Link>
-      <h1>Truck listing for {truckData?.name || "loading..."}</h1>
+      {truckData?._id !== undefined ? (
+        <TruckMenuHeader truck={truckData} />
+      ) : (
+        ""
+      )}
       <TruckMenuView menuData={truckMenuJson} />
     </Container>
   );
