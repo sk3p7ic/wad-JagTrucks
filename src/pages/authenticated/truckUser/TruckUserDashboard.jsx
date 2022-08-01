@@ -45,7 +45,7 @@ export const AccountActivePage = () => {
                 <p className="d-flex flex-row align-items-center gap-2">
                   <strong>Socials: </strong>
                   {Object.entries(truck.socials).map(([site, url], index) => (
-                    <TruckSocial siteName={site} url={url} key={index} />
+                    <TruckSocial siteName={site} url={url.url} key={index} />
                   ))}
                 </p>
               </Card.Body>

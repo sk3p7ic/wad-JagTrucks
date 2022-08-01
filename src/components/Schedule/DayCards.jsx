@@ -75,7 +75,7 @@ const DayCard = ({ scheduleItem, truckData }) => {
     let elements = [];
     sites.forEach((site, index) => {
       const url = urls[index];
-      elements = [...elements, <TruckSocial siteName={site} url={url} />];
+      elements = [...elements, <TruckSocial siteName={site} url={url.url} />];
     });
     return (
       <div className="d-flex flex-row flex-wrap gap-2">
