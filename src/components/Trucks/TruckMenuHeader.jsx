@@ -35,11 +35,13 @@ export const TruckMenuHeader = ({ truck }) => {
       </div>
       <div className="my-2 py-2 border-top border-bottom border-4 border-success d-flex flex-column">
         {Object.entries(truck.socials).map(([site, info], index) => (
-          <div>
-            <TruckSocial siteName={site} url={info.url} key={index} />
-            <span className="ms-2">
-              {site !== "website" ? `@${info.username}` : info.username}
-            </span>
+          <div key={index}>
+            <TruckSocial siteName={site} url={info.url} />
+            <h5 className="ms-2 d-inline">
+              <strong>
+                {site !== "website" ? `@${info.username}` : info.username}
+              </strong>
+            </h5>
           </div>
         ))}
       </div>
