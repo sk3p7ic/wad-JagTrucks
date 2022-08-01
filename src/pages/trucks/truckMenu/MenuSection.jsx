@@ -3,6 +3,7 @@ import { MenuItemList } from "./MenuItem";
 export const MenuSection = ({ sectionData }) => {
   const displayPrices = sectionData?.attributes?.displayPrices || false;
   const sectionTitle = sectionData.getElementsByTagName("title")[0];
+  const extraText = sectionData?.getElementsByTagName("extraText")[0] ?? "";
 
   return (
     <div>
@@ -14,6 +15,7 @@ export const MenuSection = ({ sectionData }) => {
           key={index}
         />
       ))}
+      <h4>{extraText?.value ?? ""}</h4>
     </div>
   );
 };
