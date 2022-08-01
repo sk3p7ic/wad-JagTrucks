@@ -1,7 +1,6 @@
 import { MenuSection } from "./truckMenu/MenuSection";
 
 const TruckMenu = ({ menuData }) => {
-  console.log("Am running with", menuData);
   return (
     <div>
       {menuData.children.map((section, index) => (
