@@ -1,3 +1,5 @@
+import XMLParser from "react-xml-parser";
+
 export const getTruckDataFromId = async (truckId) => {
   const res = await fetch(`/api/get/trucks/${truckId}`);
   const truck = await res.json();
@@ -43,4 +45,11 @@ export const getTrucksByFilter = async (filterString, value) => {
   const res = await fetch(`${filterString}${value}`);
   const trucks = await res.json();
   return Object.values(trucks);
+};
+
+export const getTruckMenuFromId = async (truckId) => {
+  const res = await fetch(`/menus/${truckId}.xml`);
+  const xmlReponseData = await res.text();
+  const xmlData = new XMLParser().parseFromString(xmlReponseData);
+  return xmlData || {};
 };
