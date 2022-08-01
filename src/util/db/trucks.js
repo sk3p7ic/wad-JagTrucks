@@ -49,6 +49,7 @@ export const getTrucksByFilter = async (filterString, value) => {
 
 export const getTruckMenuFromId = async (truckId) => {
   const res = await fetch(`/menus/${truckId}.xml`);
+  if (res.status !== 200) return {};
   const xmlReponseData = await res.text();
   const xmlData = new XMLParser().parseFromString(xmlReponseData);
   return xmlData || {};

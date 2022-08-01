@@ -4,6 +4,7 @@ import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import { useNavigation } from "../../contexts/NavigationContext";
 import { getTruckDataFromId, getTruckMenuFromId } from "../../util/db/trucks";
+import { TruckMenuView } from "./TruckMenuView";
 
 export const TruckViewPage = () => {
   const { setCurrentPage } = useNavigation();
@@ -27,6 +28,7 @@ export const TruckViewPage = () => {
         <BsArrowLeftCircleFill size="48" />
       </Link>
       <h1>Truck listing for {truckData?.name || "loading..."}</h1>
+      <TruckMenuView menuData={truckMenuJson} />
     </Container>
   );
 };
