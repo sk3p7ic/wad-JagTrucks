@@ -6,8 +6,12 @@ const MenuItem = ({ itemData, displayPrices }) => {
   const itemDesc = itemData?.getElementsByTagName("itemDesc")[0] ?? "";
 
   return (
-    <div className="ps-4">
-      <div className="d-flex flex-row justify-content-between">
+    <div className="px-4">
+      <div
+        className={`d-flex flex-row justify-content-between ${
+          displayPrices ? "border-bottom border-dark" : ""
+        }`}
+      >
         <h3 className="font-nunito">
           <strong>{itemName.value}</strong>
         </h3>
@@ -19,7 +23,7 @@ const MenuItem = ({ itemData, displayPrices }) => {
 };
 
 export const MenuItemList = ({ itemData, displayPrices }) => {
-  const _displayPrices = displayPrices ?? false;
+  const _displayPrices = displayPrices === true || displayPrices === "true";
   return (
     <div>
       {itemData.children.map((item, index) => (
