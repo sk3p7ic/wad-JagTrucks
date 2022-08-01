@@ -6,12 +6,14 @@ const MenuItem = ({ itemData, displayPrices }) => {
   const itemDesc = itemData?.getElementsByTagName("itemDesc")[0] ?? "";
 
   return (
-    <div>
+    <div className="ps-4">
       <div className="d-flex flex-row justify-content-between">
-        <h4>{itemName.value}</h4>
-        <h4>{itemPrice?.value ?? ""}</h4>
+        <h3 className="font-nunito">
+          <strong>{itemName.value}</strong>
+        </h3>
+        <h3 className="font-nunito">{itemPrice?.value ?? ""}</h3>
       </div>
-      <p>{itemDesc?.value ?? ""}</p>
+      <p className="font-nunito">{itemDesc?.value ?? ""}</p>
     </div>
   );
 };

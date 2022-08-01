@@ -7,7 +7,7 @@ export const MenuSection = ({ sectionData }) => {
 
   return (
     <div>
-      <h3>{sectionTitle.value}</h3>
+      <h1 className="font-vollkorn">{sectionTitle.value}</h1>
       {sectionData.getElementsByTagName("menuItems").map((item, index) => (
         <MenuItemList
           itemData={item}
@@ -15,7 +15,7 @@ export const MenuSection = ({ sectionData }) => {
           key={index}
         />
       ))}
-      <h4>{extraText?.value ?? ""}</h4>
+      <h4 className="ps-4">{extraText?.value ?? ""}</h4>
     </div>
   );
 };

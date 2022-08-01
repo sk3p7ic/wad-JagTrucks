@@ -2,7 +2,7 @@ import { MenuSection } from "./truckMenu/MenuSection";
 
 const TruckMenu = ({ menuData }) => {
   return (
-    <div>
+    <div className="d-flex flex-column gap-4">
       {menuData.children.map((section, index) => (
         <MenuSection sectionData={section} key={`menu-${index}`} />
       ))}
