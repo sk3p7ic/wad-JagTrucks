@@ -4,7 +4,7 @@ import { TruckSocial } from "../SocialDisplay";
 
 export const TruckMenuHeader = ({ truck }) => {
   return (
-    <div className="font-nunito">
+    <div className="mt-3 p-2 font-nunito bg-amber-50 rounded-top">
       <div className="d-flex flex-column flex-lg-row gap-2">
         <div
           className="bg-dark"
@@ -15,8 +15,8 @@ export const TruckMenuHeader = ({ truck }) => {
           <div className="d-flex flex-row justify-content-between">
             <Badge
               pill
-              bg="primary"
-              className="font-oswald py-3 px-4"
+              bg="amber-50"
+              className="font-oswald py-3 px-4 border border-2 pill-outline-emerald-300"
               style={{ height: "fit-content", fontSize: "1.5rem" }}
             >
               {truck?.primary_food_type}

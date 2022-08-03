@@ -6,7 +6,7 @@ export const MenuSection = ({ sectionData }) => {
   const extraText = sectionData?.getElementsByTagName("extraText")[0] ?? "";
 
   return (
-    <div>
+    <div className="p-2 bg-amber-100 rounded">
       <h1 className="font-vollkorn">{sectionTitle.value}</h1>
       {sectionData.getElementsByTagName("menuItems").map((item, index) => (
         <MenuItemList

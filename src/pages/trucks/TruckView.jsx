@@ -24,7 +24,7 @@ export const TruckViewPage = () => {
   }, [truckId]);
 
   return (
-    <Container className="d-flex flex-column gap-4">
+    <Container className="mb-4 p-3 bg-amber-200 rounded-2">
       <Link to="/trucks">
         <BsArrowLeftCircleFill size="48" />
       </Link>
