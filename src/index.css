@@ -99,6 +99,8 @@ body {
   background-color: var(--bs-light);
 }
 
+/* Util Classes */
+
 .font-oswald {
   font-family: "Oswald", sans-serif;
 }
@@ -109,4 +111,63 @@ body {
 
 .font-nunito {
   font-family: "Nunito", sans-serif;
+}
+
+.bg-amber-50 {
+  background-color: #fffbeb !important;
+}
+
+.bg-amber-100 {
+  background-color: #fef3c7 !important;
+}
+
+.bg-amber-200 {
+  background-color: #fde68a !important;
+}
+
+.bg-emerald-50 {
+  background-color: #ecfdf5 !important;
+}
+
+.bg-emerald-300 {
+  background-color: #6ee7b7 !important;
+}
+
+.btn {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.12rem;
+}
+
+.btn-emerald-300 {
+  background-color: #6ee7b7 !important;
+}
+
+.btn-emerald-300:hover {
+  background-color: #059669 !important;
+  border-color: #6ee7b7 !important;
+  color: #fef3c7 !important;
+}
+
+.btn-outline-emerald-300 {
+  border-color: #6ee7b7 !important;
+  border-width: 2px;
+  color: #059669 !important;
+  font-weight: 600;
+}
+
+.btn-outline-emerald-300:hover {
+  border-color: #059669 !important;
+  color: black !important;
+}
+
+.btn-outline-emerald-300-filled {
+  border-color: #059669 !important;
+  background-color: #6ee7b7 !important;
+}
+
+.pill-outline-emerald-300 {
+  border-color: #6ee7b7 !important;
+  border-width: 2px;
+  color: #059669 !important;
+  font-weight: 600;
 }
