@@ -5,8 +5,6 @@ import { getTruckDataFromTruckScheduleList } from "../../util/db/trucks";
 import { DayCards } from "./DayCards";
 
 export const ScheduleCalendar = ({ days, currentDate }) => {
-  //const weekTrucks = getTrucksForWeek(days);
-  //const truckData = getTruckDataFromTruckScheduleList(weekTrucks);
   const [weeklyTruckSchedule, setWeeklyTruckSchedule] = useState(null);
   const [truckData, setTruckData] = useState(null);
   const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -19,17 +17,6 @@ export const ScheduleCalendar = ({ days, currentDate }) => {
       });
     });
   }, [days]);
-
-  /*
-            {weekTrucks.get(day.getDate()) !== undefined ? (
-              <DayCard
-                dayInfo={weekTrucks.get(day.getDate())}
-                truckData={truckData}
-              />
-            ) : (
-              <h3>No truck data for this day...</h3>
-            )}
-            */
 
   return (
     <CardGroup className="d-block d-xl-flex">
