@@ -19,10 +19,10 @@ export const ScheduleCalendar = ({ days, currentDate }) => {
   }, [days]);
 
   return (
-    <CardGroup className="d-block d-xl-flex">
+    <CardGroup className="d-block d-xl-flex font-nunito">
       {Object.values(days).map((day, index) => (
-        <Card key={day.getDate()}>
-          <Card.Header className="text-center">
+        <Card className="bg-amber-50 border-dark" key={day.getDate()}>
+          <Card.Header className="text-center bg-emerald-300 border-bottom border-dark">
             <Card.Title className="m-0">
               <h2 className="font-vollkorn m-0" style={{ fontWeight: 700 }}>
                 {daysOfWeek[index]}
@@ -32,7 +32,7 @@ export const ScheduleCalendar = ({ days, currentDate }) => {
           <Card.Body
             className={`${
               day.toDateString() === currentDate.toDateString()
-                ? "bg-secondary"
+                ? "bg-emerald-50"
                 : ""
             }`}
           >

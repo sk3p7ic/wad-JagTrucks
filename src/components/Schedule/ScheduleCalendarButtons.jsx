@@ -11,10 +11,16 @@ export const ScheduleCalendarButtons = ({
     <div className="d-flex flex-column flex-xl-row justify-content-between">
       <div className="d-flex flex-row gap-3">
         <ButtonGroup>
-          <Button variant="primary" onClick={() => clickHandler("decr")}>
+          <Button
+            variant="outline-emerald-300-filled"
+            onClick={() => clickHandler("decr")}
+          >
             <BsChevronLeft />
           </Button>
-          <Button variant="primary" onClick={() => clickHandler("incr")}>
+          <Button
+            variant="outline-emerald-300-filled"
+            onClick={() => clickHandler("incr")}
+          >
             <BsChevronRight />
           </Button>
         </ButtonGroup>

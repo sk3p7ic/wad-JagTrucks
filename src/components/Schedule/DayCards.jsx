@@ -13,9 +13,9 @@ const DayCard = ({ scheduleItem, truckData }) => {
     return (
       <Badge
         pill
-        bg="primary"
-        className="font-oswald p-2"
-        style={{ height: "fit-content" }}
+        bg="amber-50"
+        className="font-oswald p-2 border pill-outline-emerald-300"
+        style={{ height: "fit-content", fontSize: "1.125rem" }}
       >
         {truck?.primary_food_type}
       </Badge>
@@ -43,9 +43,9 @@ const DayCard = ({ scheduleItem, truckData }) => {
     const end = scheduleItem?.end_time | "";
     if (start === "" || end === "") return <p></p>;
     return (
-      <p>
+      <h4>
         {formatTimeString(start.toString())}-{formatTimeString(end.toString())}
-      </p>
+      </h4>
     );
   };
 
@@ -54,7 +54,9 @@ const DayCard = ({ scheduleItem, truckData }) => {
     const accepts = truck?.accepts_dining_dollars | false;
     return (
       <div className="h-100 d-flex flex-column justify-content-between align-items-end text-end">
-        <p>Dining Dollars:</p>
+        <h4>
+          <strong>Dining Dollars:</strong>
+        </h4>
         <div>
           {accepts ? (
             <MdCheckBox size={30} />
@@ -87,7 +89,7 @@ const DayCard = ({ scheduleItem, truckData }) => {
   };
 
   return (
-    <Card>
+    <Card className="bg-amber-100">
       <Card.Img
         src={getTruckImageUrl(scheduleItem.truck_id)}
         alt="Truck header"
@@ -112,7 +114,11 @@ const DayCard = ({ scheduleItem, truckData }) => {
             {getAcceptsDiningDollars(scheduleItem.truck_id)}
           </div>
         </div>
-        <Button className="w-100" href={`/trucks/${scheduleItem.truck_id}`}>
+        <Button
+          variant="emerald-300"
+          className="w-100"
+          href={`/trucks/${scheduleItem.truck_id}`}
+        >
           View Menu
         </Button>
       </Card.Body>

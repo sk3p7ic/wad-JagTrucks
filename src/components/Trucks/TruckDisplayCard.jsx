@@ -3,7 +3,7 @@ import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 
 export const TruckDisplayCard = ({ truck }) => {
   return (
-    <Card>
+    <Card className="bg-amber-50">
       <Card.Img src={`/images/${truck.header_img_path}`} alt="Truck header" />
       <Card.Body className="d-flex flex-column gap-4 font-nunito">
         <div className="d-flex flex-row">
@@ -15,8 +15,8 @@ export const TruckDisplayCard = ({ truck }) => {
           <div className="d-flex justify-content-end align-items-center">
             <Badge
               pill
-              bg="primary"
-              className="font-oswald py-2 px-4"
+              bg="amber-50"
+              className="font-oswald py-2 px-4 border pill-outline-emerald-300"
               style={{ height: "fit-content", fontSize: "1.5rem" }}
             >
               {truck?.primary_food_type}
@@ -31,8 +31,12 @@ export const TruckDisplayCard = ({ truck }) => {
             <MdCheckBoxOutlineBlank size={32} />
           )}
         </div>
-        <Button href={`/trucks/${truck._id}`} className="w-100">
-          View Menu
+        <Button
+          variant="emerald-300"
+          href={`/trucks/${truck._id}`}
+          className="w-100"
+        >
+          <h4 className="mb-0 pb-0">View Menu</h4>
         </Button>
       </Card.Body>
     </Card>

@@ -36,7 +36,7 @@ function App() {
           <Navbar />
           <Alert
             variant="light"
-            className="position-fixed bottom-0 start-0 end-0 mx-auto"
+            className="position-fixed bottom-0 start-0 end-0 mx-auto bg-amber-50"
             style={{ width: "fit-content", zIndex: 2000 }}
             show={showCookieWarning}
             onClose={() => onCookieWarningDismiss()}

@@ -43,9 +43,12 @@ export const TruckFilters = ({ onFilterChangeCallback }) => {
             }}
           />
         </FloatingLabel>
-        <InputGroup.Text>
-          <Button onClick={() => clearSearch()}>Clear</Button>
-        </InputGroup.Text>
+        <Button variant="emerald-300" onClick={() => clearSearch()}>
+          Search
+        </Button>
+        <Button variant="outline-emerald-300" onClick={() => clearSearch()}>
+          Clear
+        </Button>
       </InputGroup>
       <div className="position-relative">
         <FaFilter

@@ -24,10 +24,10 @@ export const HomePage = () => {
             Explore the options available today.
           </h5>
           <div className="gap-2 button-grid">
-            <Button variant="success" size="lg" href="/Schedule">
+            <Button variant="emerald-300" size="lg" href="/Schedule">
               What's Here Today
             </Button>
-            <Button variant="outline-success" size="lg" href="/Trucks">
+            <Button variant="outline-emerald-300" size="lg" href="/Trucks">
               View All Trucks
             </Button>
             <Button
