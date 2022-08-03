@@ -24,7 +24,7 @@ export const SchedulePage = () => {
   };
 
   return (
-    <Container fluid style={{ padding: "0vw 5vw" }}>
+    <Container fluid className="mb-4" style={{ padding: "0vw 5vw" }}>
       <h1 className="display-1 font-oswald">What's Cookin'?</h1>
       <div className="d-flex flex-column gap-4 px-4">
         <ScheduleCalendarButtons
