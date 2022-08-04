@@ -13,9 +13,10 @@ export const JagTrucksAuthenticationProvider = ({ children }) => {
     if (authFromStorage) setJagTrucksAuth(authFromStorage);
   }, []);
 
-  const login = (user) => {
-    localStorage.setItem("jagTrucksAuth", JSON.stringify(user));
-    setJagTrucksAuth(user);
+  const login = (user, userType) => {
+    const cookie = { userType: userType ?? "truck", ...user };
+    localStorage.setItem("jagTrucksAuth", JSON.stringify(cookie));
+    setJagTrucksAuth(cookie);
   };
 
   const logout = () => {

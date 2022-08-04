@@ -20,7 +20,7 @@ export function NewAccountPage() {
   const handleSubmit = (values, userType) => {
     addUser(values, userType).then((response) => {
       if (response.success !== false || response?.user !== null) {
-        login(response.user);
+        login(response.user, userType);
         routerNavigate("/user/home");
       }
     });
