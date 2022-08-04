@@ -56,7 +56,7 @@ export const TruckFilters = ({ onFilterChangeCallback }) => {
           onClick={() => {
             setShowFilterForm(true);
           }}
-          style={{ zIndex: 2020 }}
+          style={{ zIndex: 2020, cursor: "pointer" }}
         />
         <Offcanvas
           show={showFilterForm}
