@@ -68,17 +68,26 @@ export function FoodTruckLogin() {
             }}
           />
         </Form.Group>
-        <Button
-          variant="primary"
-          onClick={() => {
-            handlleSignIn();
-          }}
-        >
-          Submit
-        </Button>{" "}
-        <Button variant="outline-primary" size="md" href="/newUser">
-          New User
-        </Button>
+        <div className="d-flex flex-row gap-2 align-items-end">
+          <Button
+            variant="primary"
+            onClick={() => {
+              handlleSignIn();
+            }}
+          >
+            Submit
+          </Button>
+          <div>
+            <p className="d-inline">New user? </p>
+            <p
+              className="d-inline"
+              style={{ textDecoration: "underline", cursor: "pointer" }}
+              onClick={() => routerNavigate("/newUser")}
+            >
+              Create an account.
+            </p>
+          </div>
+        </div>
       </Form>
       <Toast
         className="mt-4"

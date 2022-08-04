@@ -240,13 +240,25 @@ export function NewFoodTruck() {
           />
           <TermsAndConditionsModal />
         </Form.Group>
-        <Button
-          onClick={(e) => {
-            handleSubmit(e);
-          }}
-        >
-          Submit form
-        </Button>
+        <div className="d-flex flex-row gap-2 align-items-end">
+          <Button
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          >
+            Submit form
+          </Button>
+          <div>
+            <p className="d-inline">Already a user? </p>
+            <p
+              className="d-inline"
+              style={{ textDecoration: "underline", cursor: "pointer" }}
+              onClick={() => routerNavigate("/login")}
+            >
+              Log In.
+            </p>
+          </div>
+        </div>
         {creationErrorText !== "" ? (
           <h1 className="text-error">{creationErrorText}</h1>
         ) : (
