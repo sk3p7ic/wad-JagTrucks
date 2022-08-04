@@ -106,8 +106,8 @@ export function NewFoodTruck() {
   };
 
   return (
-    <Container className="d-flex flex-column justify-content-center align-items-center">
-      <h1>Welcome to the JagTrucks Website!</h1>
+    <Container className="d-flex flex-column justify-content-center align-items-center font-nunito">
+      <h1 className="display-1 font-oswald">Join the JagTrucks Website!</h1>
       <Form noValidate validated={validated}>
         <Row className="mb-3">
           <Form.Group as={Col} md="4" controlId="firstNameControl">
@@ -246,7 +246,7 @@ export function NewFoodTruck() {
               handleSubmit(e);
             }}
           >
-            Submit form
+            Sign Up
           </Button>
           <div>
             <p className="d-inline">Already a user? </p>
