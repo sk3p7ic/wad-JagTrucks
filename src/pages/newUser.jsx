@@ -5,6 +5,7 @@ import { useNavigation } from "../contexts/NavigationContext";
 import { addUser } from "../util/db/users";
 import { useJagTrucksAuthentication } from "../contexts/AuthenticationContext";
 import { NewTruckCreateAccountForm } from "../components/CreateAccount/NewTruckUser";
+import { NewStudentCreateAccountForm } from "../components/CreateAccount/NewStudentUser";
 
 export function NewAccountPage() {
   const { login } = useJagTrucksAuthentication();
@@ -41,11 +42,14 @@ export function NewAccountPage() {
           </Form.Select>
         </div>
       </Form>
+      {currentFormType === "1" && (
+        <NewStudentCreateAccountForm
+          onSubmitCallback={(values) => handleSubmit(values, "student")}
+        />
+      )}
       {currentFormType === "2" && (
         <NewTruckCreateAccountForm
-          onSubmitCallback={(values, userType) =>
-            handleSubmit(values, userType)
-          }
+          onSubmitCallback={(values) => handleSubmit(values, "truck")}
         />
       )}
     </Container>

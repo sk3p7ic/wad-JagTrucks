@@ -1,14 +1,25 @@
 export const addUser = async (data, accountType) => {
-  if (accountType === "truck") {
-    const res = await fetch("/api/set/users/newTruck/", {
-      method: "post",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
-    });
-    const json = await res.json();
-    return json;
+  let res, json;
+  switch (accountType) {
+    case "truck":
+      res = await fetch("/api/set/users/newTruck/", {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      });
+      json = await res.json();
+      return json;
+    case "student":
+      res = await fetch("/api/set/users/newStudent/", {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      });
+      json = await res.json();
+      return json;
+    default:
+      return { success: false };
   }
-  return { success: false };
 };
 
 export const signIn = async (datas) => {

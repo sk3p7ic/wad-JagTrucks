@@ -9,13 +9,12 @@ const initialFormValues = {
   username: "",
   email: "",
   phoneNumber: "",
-  truckName: "",
   password: "",
   confirmPassword: "",
   termCondAgree: false,
 };
 
-export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
+export const NewStudentCreateAccountForm = ({ onSubmitCallback }) => {
   const routerNavigate = useNavigate();
   const [validated, setValidated] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
@@ -39,9 +38,6 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
         break;
       case "phoneNumber":
         setFormValues({ ...currentValues, phoneNumber: value });
-        break;
-      case "truckName":
-        setFormValues({ ...currentValues, truckName: value });
         break;
       case "password":
         setFormValues({ ...currentValues, password: value });
@@ -77,7 +73,7 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
       stop();
     } else {
       setValidated(true);
-      onSubmitCallback(formValues);
+      onSubmitCallback(formValues, "truck");
     }
   };
 
@@ -149,19 +145,6 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
           />
           <Form.Control.Feedback type="invalid">
             Please provide a valid phone number.
-          </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group as={Col} md="3" controlId="truckNameControl">
-          <Form.Label>Truck Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="The Food Truck"
-            required
-            value={formValues.truckName}
-            onChange={(e) => updateValue("truckName", e.target.value)}
-          />
-          <Form.Control.Feedback type="invalid">
-            Please provide a valid name.
           </Form.Control.Feedback>
         </Form.Group>
 
