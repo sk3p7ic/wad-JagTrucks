@@ -1,4 +1,4 @@
-import { Container, Button, Form } from "react-bootstrap";
+import { Container, Button, Form, Toast } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useNavigation } from "../contexts/NavigationContext";
@@ -15,6 +15,7 @@ export function FoodTruckLogin() {
   const routerNavigate = useNavigate();
 
   const [loginInfo, setloginInfo] = useState(userInfo);
+  const [showErrorToast, setShowErrorToast] = useState(false);
 
   useEffect(() => {
     setCurrentPage("/login");
@@ -32,6 +33,8 @@ export function FoodTruckLogin() {
       if (response.valid) {
         login(response.user);
         routerNavigate("/user/home");
+      } else {
+        setShowErrorToast(true);
       }
     });
   };
@@ -77,11 +80,21 @@ export function FoodTruckLogin() {
           New User
         </Button>
       </Form>
+      <Toast
+        className="mt-4"
+        bg="danger"
+        onClose={() => setShowErrorToast(false)}
+        show={showErrorToast}
+        delay={5000}
+        autohide
+      >
+        <Toast.Header>
+          <strong className="me-auto">Login Failed</strong>
+        </Toast.Header>
+        <Toast.Body>
+          Sorry, but your credentials were invalid. Please try again.
+        </Toast.Body>
+      </Toast>
     </Container>
   );
-}
-{
-  /*We also need a log out button. Can we make it dynamic to also allow for a button to swap to signout?*
- Probably making this way more complicated than needed but should we also have a list going that can grow as we 
-get more food trucks coming in or does the database take care of all of that? */
 }
