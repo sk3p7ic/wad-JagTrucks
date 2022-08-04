@@ -22,16 +22,28 @@ export const addUser = async (data, accountType) => {
   }
 };
 
-export const signIn = async (datas) => {
-  const res = await fetch("/api/signIn/truck/", {
-    method: "post",
-    body: JSON.stringify(datas),
-    headers: { "Content-Type": "application/json" },
-  });
-  const isValid = await res.json();
-  console.log(isValid);
-  console.log(datas);
-  return isValid;
+export const signIn = async (datas, userType) => {
+  if (userType === "truck") {
+    const res = await fetch("/api/signIn/truck/", {
+      method: "post",
+      body: JSON.stringify(datas),
+      headers: { "Content-Type": "application/json" },
+    });
+    const isValid = await res.json();
+    console.log(isValid);
+    console.log(datas);
+    return isValid;
+  } else {
+    const res = await fetch("/api/signIn/student/", {
+      method: "post",
+      body: JSON.stringify(datas),
+      headers: { "Content-Type": "application/json" },
+    });
+    const isValid = await res.json();
+    console.log(isValid);
+    console.log(datas);
+    return isValid;
+  }
 };
 
 /*{

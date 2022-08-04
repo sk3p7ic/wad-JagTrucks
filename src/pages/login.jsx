@@ -14,6 +14,8 @@ export function FoodTruckLogin() {
   const { setCurrentPage } = useNavigation();
   const routerNavigate = useNavigate();
 
+  const [currentFormType, setCurrentFormType] = useState("");
+
   const [loginInfo, setloginInfo] = useState(userInfo);
   const [showErrorToast, setShowErrorToast] = useState(false);
 
@@ -29,7 +31,8 @@ export function FoodTruckLogin() {
   }
 
   const handlleSignIn = () => {
-    signIn(loginInfo).then((response) => {
+    const userOfApp = currentFormType === "1" ? "student" : "truck";
+    signIn(loginInfo, userOfApp).then((response) => {
       if (response.valid) {
         login(response.user);
         routerNavigate("/user/home");
@@ -38,11 +41,21 @@ export function FoodTruckLogin() {
       }
     });
   };
-
   return (
     <Container className=" d-flex flex-column justify-content-center align-items-center">
       <Form style={{ width: "fit-content" }}>
         {" "}
+        <Form.Group>
+          <Form.Label id="account-type-label">Account Type</Form.Label>
+          <Form.Select
+            aria-labelledby="account-type-label"
+            onChange={(e) => setCurrentFormType(e.target.value)}
+          >
+            <option>Please select an account type</option>
+            <option value="1">Student</option>
+            <option value="2">Food Truck</option>
+          </Form.Select>
+        </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
