@@ -34,7 +34,7 @@ export function FoodTruckLogin() {
     const userOfApp = currentFormType === "1" ? "student" : "truck";
     signIn(loginInfo, userOfApp).then((response) => {
       if (response.valid) {
-        login(response.user);
+        login(response.user, userOfApp);
         routerNavigate("/user/home");
       } else {
         setShowErrorToast(true);
