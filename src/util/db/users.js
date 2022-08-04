@@ -1,11 +1,14 @@
-export const addUser = async (data) => {
-  const res = await fetch("/api/set/users/", {
-    method: "post",
-    body: JSON.stringify(data),
-    headers: { "Content-Type": "application/json" },
-  });
-  const json = await res.json();
-  return json;
+export const addUser = async (data, accountType) => {
+  if (accountType === "truck") {
+    const res = await fetch("/api/set/users/newTruck/", {
+      method: "post",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+    const json = await res.json();
+    return json;
+  }
+  return { success: false };
 };
 
 export const signIn = async (datas) => {

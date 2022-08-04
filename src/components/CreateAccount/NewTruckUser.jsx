@@ -73,14 +73,12 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
       event.stopPropagation();
     };
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
+    if (form.checkValidity() === false || !checkPassword()) {
       stop();
+    } else {
+      setValidated(true);
+      onSubmitCallback(formValues, "truck");
     }
-    if (!checkPassword()) {
-      stop();
-    }
-    setValidated(true);
-    onSubmitCallback(formValues);
   };
 
   return (
@@ -206,7 +204,8 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
-      <Form.Group className="mb-3 d-flex gap-2">
+      <Form.Group>
+        <TermsAndConditionsModal />
         <Form.Check
           required
           feedback="You must agree before submitting."
@@ -214,9 +213,8 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
           value={formValues.termCondAgree}
           onChange={(e) => updateValue("termCondAgree", e.target.value)}
         />
-        <TermsAndConditionsModal />
       </Form.Group>
-      <div className="d-flex flex-row gap-2 align-items-end">
+      <Form.Group className="mt-4 d-flex flex-row gap-2 align-items-end">
         <Button
           onClick={(e) => {
             handleSubmit(e);
@@ -234,7 +232,7 @@ export const NewTruckCreateAccountForm = ({ onSubmitCallback }) => {
             Log In.
           </p>
         </div>
-      </div>
+      </Form.Group>
     </Form>
   );
 };
