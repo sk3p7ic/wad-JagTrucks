@@ -23,7 +23,7 @@ export const addUser = async (data, accountType) => {
 };
 
 export const signIn = async (datas) => {
-  const res = await fetch("/api/set/signIn/", {
+  const res = await fetch("/api/signIn/truck/", {
     method: "post",
     body: JSON.stringify(datas),
     headers: { "Content-Type": "application/json" },

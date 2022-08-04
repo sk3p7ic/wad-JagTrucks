@@ -14,6 +14,7 @@ import { TruckUserHome } from "./pages/authenticated/truckUser/TruckUserHome";
 import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useJagTrucksAuthentication } from "./contexts/AuthenticationContext";
+import { StudentUserHome } from "./pages/authenticated/studentUser/StudentUserHome";
 function App() {
   const { jagTrucksAuth } = useJagTrucksAuthentication();
   const [showCookieWarning, setShowCookieWarning] = useState(false);
@@ -62,9 +63,7 @@ function App() {
               element={
                 <RequireJagTrucksAuth>
                   {jagTrucksAuth?.userType === "truck" && <TruckUserHome />}
-                  {jagTrucksAuth?.userType === "student" && (
-                    <p>You are a student!</p>
-                  )}
+                  {jagTrucksAuth?.userType === "student" && <StudentUserHome />}
                 </RequireJagTrucksAuth>
               }
             >
@@ -74,7 +73,7 @@ function App() {
                   <RequireJagTrucksAuth>
                     {jagTrucksAuth?.userType === "truck" && <TruckUserHome />}
                     {jagTrucksAuth?.userType === "student" && (
-                      <p>You are a student!</p>
+                      <StudentUserHome />
                     )}
                   </RequireJagTrucksAuth>
                 }
