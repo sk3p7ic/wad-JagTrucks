@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useJagTrucksAuthentication } from "./contexts/AuthenticationContext";
 import { StudentUserHome } from "./pages/authenticated/studentUser/StudentUserHome";
+import { EditTruckPage } from "./pages/authenticated/truckUser/EditTruck";
 function App() {
   const { jagTrucksAuth } = useJagTrucksAuthentication();
   const [showCookieWarning, setShowCookieWarning] = useState(false);
@@ -59,26 +60,23 @@ function App() {
             <Route path="login" element={<FoodTruckLogin />} />
             <Route path="newUser" element={<NewAccountPage />} />
             <Route
-              path="user"
+              path="user/home"
               element={
                 <RequireJagTrucksAuth>
                   {jagTrucksAuth?.userType === "truck" && <TruckUserHome />}
                   {jagTrucksAuth?.userType === "student" && <StudentUserHome />}
                 </RequireJagTrucksAuth>
               }
-            >
-              <Route
-                path="home"
-                element={
-                  <RequireJagTrucksAuth>
-                    {jagTrucksAuth?.userType === "truck" && <TruckUserHome />}
-                    {jagTrucksAuth?.userType === "student" && (
-                      <StudentUserHome />
-                    )}
-                  </RequireJagTrucksAuth>
-                }
-              />
-            </Route>
+            />
+            <Route
+              path="user/editTruck/:truckId"
+              element={
+                <RequireJagTrucksAuth>
+                  {jagTrucksAuth?.userType === "truck" && <EditTruckPage />}
+                  {jagTrucksAuth?.userType !== "truck" && <NonexistentPage />}
+                </RequireJagTrucksAuth>
+              }
+            />
             <Route path="*" element={<NonexistentPage />} />
           </Routes>
         </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Accordion, Card, Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { TruckSocial } from "../../../components/SocialDisplay";
 import { useJagTrucksAuthentication } from "../../../contexts/AuthenticationContext";
 import { getTruckDataFromId } from "../../../util/db/trucks";
@@ -7,6 +8,7 @@ import { getTruckDataFromId } from "../../../util/db/trucks";
 export const AccountActivePage = () => {
   const { jagTrucksAuth } = useJagTrucksAuthentication();
   const [ownedTrucks, setOwnedTrucks] = useState([]);
+  const routerNavigate = useNavigate();
 
   useEffect(() => {
     const truckIds = jagTrucksAuth.trucks;
@@ -49,7 +51,10 @@ export const AccountActivePage = () => {
                   ))}
                 </p>
               </Card.Body>
-              <Card.Link style={{ paddingLeft: "var(--bs-card-spacer-y)" }}>
+              <Card.Link
+                style={{ paddingLeft: "var(--bs-card-spacer-y)" }}
+                onClick={() => routerNavigate(`/user/editTruck/${truck._id}`)}
+              >
                 Edit
               </Card.Link>
             </Card>
