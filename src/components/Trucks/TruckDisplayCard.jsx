@@ -1,7 +1,9 @@
 import { Card, Badge, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import { MdCheckBox, MdCheckBoxOutlineBlank } from "react-icons/md";
 
 export const TruckDisplayCard = ({ truck }) => {
+  const routerNavigate = useNavigate();
   return (
     <Card className="bg-amber-50">
       <Card.Img src={`/images/${truck.header_img_path}`} alt="Truck header" />
@@ -33,7 +35,7 @@ export const TruckDisplayCard = ({ truck }) => {
         </div>
         <Button
           variant="emerald-300"
-          href={`/trucks/${truck._id}`}
+          onClick={() => routerNavigate(`/trucks/${truck?._id}`)}
           className="w-100"
         >
           <h4 className="mb-0 pb-0">View Menu</h4>
