@@ -32,7 +32,7 @@ export const TruckViewPage = () => {
         ""
       )}
       {truckData?.menu !== undefined ? (
-        <TruckMenuView menuData={truckData.menu} />
+        <TruckMenuView menuData={truckData.menu} truckId={truckId} />
       ) : (
         <p>Nothing to show</p>
       )}

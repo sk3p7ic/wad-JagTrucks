@@ -11,7 +11,7 @@ import "./Navbar.css";
 export const Navbar = () => {
   const { currentPage } = useNavigation();
   const { jagTrucksAuth } = useJagTrucksAuthentication();
-  const { cartTotalItems } = useCart();
+  const { totalItems } = useCart();
 
   return (
     <BSNavbar
@@ -47,7 +47,7 @@ export const Navbar = () => {
               <Button variant="emerald-300" className="position-relative">
                 <MdShoppingCart size={28} />
                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                  {cartTotalItems()}
+                  {totalItems}
                 </span>
               </Button>
             </Nav.Item>
