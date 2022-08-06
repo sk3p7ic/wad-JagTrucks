@@ -4,14 +4,13 @@ import { BsArrowLeftCircleFill } from "react-icons/bs";
 import { Link, useParams } from "react-router-dom";
 import { TruckMenuHeader } from "../../components/Trucks/TruckMenuHeader";
 import { useNavigation } from "../../contexts/NavigationContext";
-import { getTruckDataFromId, getTruckMenuFromId } from "../../util/db/trucks";
-import { TruckMenuView } from "./TruckMenuView";
+import { getTruckDataFromId } from "../../util/db/trucks";
+import { TruckMenuView } from "../../components/Trucks/TruckMenuView";
 
 export const TruckViewPage = () => {
   const { setCurrentPage } = useNavigation();
   const { truckId } = useParams();
   const [truckData, setTruckData] = useState();
-  const [truckMenuJson, setTruckMenuJson] = useState({});
 
   useEffect(() => {
     const unsubscribe = setCurrentPage("/trucks");
@@ -20,7 +19,6 @@ export const TruckViewPage = () => {
 
   useEffect(() => {
     getTruckDataFromId(truckId).then((data) => setTruckData(data));
-    getTruckMenuFromId(truckId).then((data) => setTruckMenuJson(data));
   }, [truckId]);
 
   return (
@@ -33,7 +31,11 @@ export const TruckViewPage = () => {
       ) : (
         ""
       )}
-      <TruckMenuView menuData={truckMenuJson} />
+      {truckData?.menu !== undefined ? (
+        <TruckMenuView menuData={truckData.menu} truckId={truckId} />
+      ) : (
+        <p>Nothing to show</p>
+      )}
     </Container>
   );
 };
