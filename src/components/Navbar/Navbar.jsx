@@ -8,7 +8,7 @@ import PageLinkData from "../../data/pages.json";
 import { UserNavbarSection } from "../TruckUserPages/UserNavabarSection";
 import "./Navbar.css";
 
-export const Navbar = () => {
+export const Navbar = ({ cartToggleRef }) => {
   const { currentPage } = useNavigation();
   const { jagTrucksAuth } = useJagTrucksAuthentication();
   const { totalItems } = useCart();
@@ -44,9 +44,13 @@ export const Navbar = () => {
         {jagTrucksAuth === undefined || jagTrucksAuth === null ? (
           <Nav className="ms-lg-auto d-flex flex-column flex-lg-row gap-2">
             <Nav.Item>
-              <Button variant="emerald-300" className="position-relative">
-                <MdShoppingCart size={28} />
-                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              <Button
+                variant="outline-emerald-300"
+                className="position-relative p-2 rounded-circle"
+                ref={cartToggleRef}
+              >
+                <MdShoppingCart size={32} />
+                <span className="position-absolute top-0 translate-middle badge rounded-pill bg-danger font-nunito">
                   {totalItems}
                 </span>
               </Button>

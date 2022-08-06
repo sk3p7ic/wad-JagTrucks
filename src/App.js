@@ -11,12 +11,13 @@ import { FoodTruckLogin } from "./pages/login";
 import { NewAccountPage } from "./pages/newUser";
 import { RequireJagTrucksAuth } from "./pages/authenticated/RequireJagTrucksAuth";
 import { TruckUserHome } from "./pages/authenticated/truckUser/TruckUserHome";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Alert } from "react-bootstrap";
 import { useJagTrucksAuthentication } from "./contexts/AuthenticationContext";
 import { StudentUserHome } from "./pages/authenticated/studentUser/StudentUserHome";
 import { EditTruckPage } from "./pages/authenticated/truckUser/EditTruck";
 import { CartProvider } from "./contexts/CartContext";
+import { CartOffcanvas } from "./components/CartOffcanvas";
 function App() {
   const { jagTrucksAuth } = useJagTrucksAuthentication();
   const [showCookieWarning, setShowCookieWarning] = useState(false);
@@ -33,11 +34,21 @@ function App() {
     setShowCookieWarning(false);
   };
 
+  const [showCart, setShowCart] = useState(false);
+  const cartToggleRef = useRef();
+
+  const stopShowingCart = () => setShowCart(false);
+
+  useEffect(() => {
+    cartToggleRef.current.onclick = () => setShowCart(true);
+  }, [cartToggleRef]);
+
   return (
     <CartProvider>
       <NavProvider>
+        <CartOffcanvas show={showCart} stopShowCallback={stopShowingCart} />
         <div className="vh-100 d-flex flex-column">
-          <Navbar />
+          <Navbar cartToggleRef={cartToggleRef} />
           <Alert
             variant="light"
             className="position-fixed bottom-0 start-0 end-0 mx-auto bg-amber-50"
