@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { useTruckMenuManager } from "../../../contexts/TruckMenuContext";
 
 export const MenuItemQuantitySelector = ({ fullItemId, isOrderable }) => {
-  const { orderableItems, addOrderableItem, incrItemInCart, decrItemInCart } =
+  const { addOrderableItem, incrItemInCart, decrItemInCart } =
     useTruckMenuManager();
   const [itemQuantity, setItemQuantity] = useState(0);
 
