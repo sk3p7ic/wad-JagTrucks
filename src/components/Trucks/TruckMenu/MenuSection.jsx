@@ -1,11 +1,11 @@
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container } from "react-bootstrap";
 import { MenuItem } from "./MenuItem";
 import { MenuItemQuantitySelector } from "./MenuItemQuantitySelector";
 
 export const MenuSection = ({ sectionData }) => {
   return (
-    <div>
-      <h2>{sectionData.title}</h2>
+    <Container className="bg-amber-100 rounded">
+      <h2 className="font-vollkorn">{sectionData.title}</h2>
       {sectionData.items.map((item, index) => (
         <Row key={index}>
           <Col xs="auto">
@@ -19,6 +19,6 @@ export const MenuSection = ({ sectionData }) => {
           </Col>
         </Row>
       ))}
-    </div>
+    </Container>
   );
 };

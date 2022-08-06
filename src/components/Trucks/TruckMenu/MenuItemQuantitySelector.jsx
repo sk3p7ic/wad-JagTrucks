@@ -27,7 +27,10 @@ export const MenuItemQuantitySelector = ({ fullItemId, isOrderable }) => {
   };
 
   return (
-    <div className="d-flex flex-row gap-2 align-items-center bg-amber-100 rounded-3">
+    <div
+      className="d-flex flex-row gap-2 align-items-center bg-amber-50 rounded-3"
+      style={{ opacity: isOrderable ? 100 : 0 }}
+    >
       <Button
         className="rounded-0 rounded-start"
         disabled={!isOrderable}
