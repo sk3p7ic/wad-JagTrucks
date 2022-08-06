@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
+import { useCart } from "./CartContext";
 
 const TruckMenuContext = React.createContext();
 
 export const useTruckMenuManager = () => useContext(TruckMenuContext);
 
 export const TruckMenuManagerProvider = ({ children }) => {
+  const { addItem } = useCart();
   const [orderableItems, setOrderableItems] = useState({});
 
   const addOrderableItem = (itemId) => {
@@ -16,6 +18,7 @@ export const TruckMenuManagerProvider = ({ children }) => {
     let items = orderableItems;
     const quant = items[itemId] + 1 ?? 0;
     items = { ...items, [itemId]: quant };
+    addItem("", itemId, quant);
     setOrderableItems(items);
   };
 

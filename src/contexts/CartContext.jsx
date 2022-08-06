@@ -9,12 +9,18 @@ export const CartProvider = ({ children }) => {
 
   const addItem = (truckId, fullItemId, quantity) => {
     let cart = cartItems;
-    cart = [...cart, { id: truckId, item: fullItemId, quantity: quantity }];
+    cart = [...cart, { truck: truckId, item: fullItemId, quantity: quantity }];
     setCartItems(cart);
   };
 
+  const cartTotalItems = () => {
+    let total;
+    total = cartItems.length;
+    return total;
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addItem }}>
+    <CartContext.Provider value={{ cartItems, cartTotalItems, addItem }}>
       {children}
     </CartContext.Provider>
   );
