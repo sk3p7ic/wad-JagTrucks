@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { FaPlus, FaMinus } from "react-icons/fa";
 import { useTruckMenuManager } from "../../../contexts/TruckMenuContext";
 
 export const MenuItemQuantitySelector = ({ fullItemId, isOrderable }) => {
@@ -32,19 +33,21 @@ export const MenuItemQuantitySelector = ({ fullItemId, isOrderable }) => {
       style={{ opacity: isOrderable ? 100 : 0 }}
     >
       <Button
+        variant="emerald-300"
         className="rounded-0 rounded-start"
         disabled={!isOrderable}
         onClick={() => decr()}
       >
-        -
+        <FaMinus size={8} />
       </Button>
       <span>{itemQuantity}</span>
       <Button
+        variant="emerald-300"
         className="rounded-0 rounded-end"
         disabled={!isOrderable}
         onClick={() => incr()}
       >
-        +
+        <FaPlus size={8} />
       </Button>
     </div>
   );
