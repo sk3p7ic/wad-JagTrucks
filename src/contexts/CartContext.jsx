@@ -10,7 +10,6 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     let total = 0;
-    console.log(cartItems);
     Object.values(cartItems).forEach((item) => {
       total += item;
     });
@@ -23,8 +22,17 @@ export const CartProvider = ({ children }) => {
     setCartItems({ ...cartItems });
   };
 
+  const filterCart = () => {
+    const cart = Object.fromEntries(
+      Object.entries(cartItems).filter((entry) => entry[1] !== 0)
+    );
+    setCartItems(cart);
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, totalItems, updateItem }}>
+    <CartContext.Provider
+      value={{ cartItems, totalItems, updateItem, filterCart }}
+    >
       {children}
     </CartContext.Provider>
   );
