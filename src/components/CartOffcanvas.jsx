@@ -4,7 +4,7 @@ import { useCart } from "../contexts/CartContext";
 import { getTruckDataFromId } from "../util/db/trucks";
 
 export const CartOffcanvas = ({ show, stopShowCallback }) => {
-  const { cartItems, filterCart } = useCart();
+  const { cartItems, filterCart, totalItems } = useCart();
   const [userCart, setUserCart] = useState([]);
   const [truckData, setTruckData] = useState([]);
 
@@ -100,7 +100,9 @@ export const CartOffcanvas = ({ show, stopShowCallback }) => {
           <h3 className="m-0">
             Total: <strong>{getTotalPrice() ?? 0}</strong>
           </h3>
-          <Button>Checkout</Button>
+          <Button variant="emerald-300" disabled={totalItems === 0}>
+            Checkout
+          </Button>
         </div>
       </Offcanvas.Body>
     </Offcanvas>
