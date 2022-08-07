@@ -74,7 +74,8 @@ export const CartOffcanvas = ({ show, stopShowCallback }) => {
             <h4 className="font-vollkorn">{truck.name}</h4>
             {filterCartByTruck(truck._id).map(
               (entry, index) =>
-                getQuantityForItem(truck._id, entry.section, entry.item) && (
+                getQuantityForItem(truck._id, entry.section, entry.item) !==
+                  0 && (
                   <div className="d-flex flex-row gap-4" key={index}>
                     <p>
                       {getQuantityForItem(truck._id, entry.section, entry.item)}
