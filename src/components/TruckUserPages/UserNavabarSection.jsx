@@ -17,32 +17,29 @@ export const UserNavbarSection = () => {
   };
 
   return (
-    <Nav className="ms-lg-auto">
-      {jagTrucksAuth.userType === "student" && <CartButton />}
-      <NavDropdown
-        title={`${jagTrucksAuth.firstName} ${jagTrucksAuth.lastName}`}
-        id="navProfileDropdown"
+    <NavDropdown
+      title={`${jagTrucksAuth.firstName} ${jagTrucksAuth.lastName}`}
+      id="navProfileDropdown"
+    >
+      <NavDropdown.Item
+        eventKey="1.1"
+        onClick={() => {
+          handleProfileClick();
+        }}
       >
-        <NavDropdown.Item
-          eventKey="1.1"
-          onClick={() => {
-            handleProfileClick();
-          }}
-        >
-          Profile
-        </NavDropdown.Item>
-        <NavDropdown.Item eventKey="1.2">My Trucks</NavDropdown.Item>
-        <NavDropdown.Item eventKey="1.3">Foo Bar</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item
-          eventKey="1.4"
-          onClick={() => {
-            handleLogout();
-          }}
-        >
-          Logout
-        </NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
+        Profile
+      </NavDropdown.Item>
+      <NavDropdown.Item eventKey="1.2">My Trucks</NavDropdown.Item>
+      <NavDropdown.Item eventKey="1.3">Foo Bar</NavDropdown.Item>
+      <NavDropdown.Divider />
+      <NavDropdown.Item
+        eventKey="1.4"
+        onClick={() => {
+          handleLogout();
+        }}
+      >
+        Logout
+      </NavDropdown.Item>
+    </NavDropdown>
   );
 };

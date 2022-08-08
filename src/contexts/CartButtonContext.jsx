@@ -13,6 +13,7 @@ export const CartButtonManagerProvider = ({ children }) => {
   useEffect(() => {
     if (cartToggleButtonRef.current) {
       cartToggleButtonRef.current.onclick = () => setShowCart(true);
+      console.log("set onclick for ", cartToggleButtonRef.current);
     }
   }, [cartToggleButtonRef]);
 

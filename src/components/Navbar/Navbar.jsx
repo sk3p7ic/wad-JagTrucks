@@ -39,9 +39,9 @@ export const Navbar = () => {
           })}
         </Nav>
         <hr className="d-lg-none" />
-        {jagTrucksAuth === undefined || jagTrucksAuth === null ? (
-          <Nav className="ms-lg-auto d-flex flex-column flex-lg-row gap-2">
-            <CartButton />
+        <Nav className="ms-lg-auto d-flex flex-column flex-lg-row gap-2">
+          <CartButton />
+          {jagTrucksAuth === undefined || jagTrucksAuth === null ? (
             <Link
               to="/login"
               className={`text-dark ${
@@ -50,10 +50,10 @@ export const Navbar = () => {
             >
               Login
             </Link>
-          </Nav>
-        ) : (
-          <UserNavbarSection />
-        )}
+          ) : (
+            <UserNavbarSection />
+          )}
+        </Nav>
       </BSNavbar.Collapse>
     </BSNavbar>
   );
