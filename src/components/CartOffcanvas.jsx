@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Offcanvas, Button } from "react-bootstrap";
+import { MdRemove } from "react-icons/md";
 import { useCart } from "../contexts/CartContext";
 import { getTruckDataFromId } from "../util/db/trucks";
 import { useCartButtonManager } from "../contexts/CartButtonContext";
 
 export const CartOffcanvas = () => {
   const { showCart, stopShowingCart } = useCartButtonManager();
-  const { cartItems, filterCart, totalItems } = useCart();
+  const { cartItems, filterCart, totalItems, updateItem } = useCart();
   const [userCart, setUserCart] = useState([]);
   const [truckData, setTruckData] = useState([]);
 
@@ -63,6 +64,10 @@ export const CartOffcanvas = () => {
     return amount !== 0 ? `$${amount.toFixed(2)}` : "";
   };
 
+  const removeItem = (truckId, sectionId, itemId) => {
+    updateItem(`${truckId}.${sectionId}.${itemId}`, 0);
+  };
+
   return (
     <Offcanvas show={showCart} onHide={stopShowingCart} placement="end">
       <Offcanvas.Header closeButton>
@@ -74,28 +79,48 @@ export const CartOffcanvas = () => {
         {truckData.map((truck, index) => (
           <div key={index}>
             <h4 className="font-vollkorn">{truck.name}</h4>
-            {filterCartByTruck(truck._id).map(
-              (entry, index) =>
-                getQuantityForItem(truck._id, entry.section, entry.item) !==
-                  0 && (
-                  <div className="d-flex flex-row gap-4" key={index}>
-                    <p>
-                      {getQuantityForItem(truck._id, entry.section, entry.item)}
-                      x
-                    </p>
-                    <p>{truck.menu[entry.section].items[entry.item].name}</p>
-                    <p className="flex-grow-1 text-end">
-                      {formatPrice(
-                        getQuantityForItem(
+            <div className="d-flex flex-column gap-2">
+              {filterCartByTruck(truck._id).map(
+                (entry, index) =>
+                  getQuantityForItem(truck._id, entry.section, entry.item) !==
+                    0 && (
+                    <div
+                      className="d-flex flex-row gap-4 align-items-center"
+                      key={index}
+                    >
+                      <Button
+                        size="sm"
+                        variant="outline-danger"
+                        onClick={() =>
+                          removeItem(truck._id, entry.section, entry.item)
+                        }
+                      >
+                        <MdRemove />
+                      </Button>
+                      <p className="m-0">
+                        {getQuantityForItem(
                           truck._id,
                           entry.section,
                           entry.item
-                        ) * truck.menu[entry.section].items[entry.item].price
-                      )}
-                    </p>
-                  </div>
-                )
-            )}
+                        )}
+                        x
+                      </p>
+                      <p className="m-0">
+                        {truck.menu[entry.section].items[entry.item].name}
+                      </p>
+                      <p className="m-0 flex-grow-1 text-end">
+                        {formatPrice(
+                          getQuantityForItem(
+                            truck._id,
+                            entry.section,
+                            entry.item
+                          ) * truck.menu[entry.section].items[entry.item].price
+                        )}
+                      </p>
+                    </div>
+                  )
+              )}
+            </div>
           </div>
         ))}
         <div className="mt-auto d-flex flex-row gap-2 justify-content-end align-items-center font-oswald">
