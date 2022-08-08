@@ -1,6 +1,7 @@
 import { Nav, NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useJagTrucksAuthentication } from "../../contexts/AuthenticationContext";
+import { CartButton } from "../Navbar/CartButton";
 
 export const UserNavbarSection = () => {
   const { jagTrucksAuth, logout } = useJagTrucksAuthentication();
@@ -17,6 +18,7 @@ export const UserNavbarSection = () => {
 
   return (
     <Nav className="ms-lg-auto">
+      {jagTrucksAuth.userType === "student" && <CartButton />}
       <NavDropdown
         title={`${jagTrucksAuth.firstName} ${jagTrucksAuth.lastName}`}
         id="navProfileDropdown"

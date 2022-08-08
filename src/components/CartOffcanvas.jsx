@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Offcanvas, Button } from "react-bootstrap";
 import { useCart } from "../contexts/CartContext";
 import { getTruckDataFromId } from "../util/db/trucks";
+import { useCartButtonManager } from "../contexts/CartButtonContext";
 
-export const CartOffcanvas = ({ show, stopShowCallback }) => {
+export const CartOffcanvas = () => {
+  const { showCart, stopShowingCart } = useCartButtonManager();
   const { cartItems, filterCart, totalItems } = useCart();
   const [userCart, setUserCart] = useState([]);
   const [truckData, setTruckData] = useState([]);
@@ -31,7 +33,7 @@ export const CartOffcanvas = ({ show, stopShowCallback }) => {
     getTruckDatasAndUpdate(neededTruckIds);
 
     // eslint-disable-next-line
-  }, [show]);
+  }, [showCart]);
 
   const filterCartByTruck = (truckId) => {
     return userCart.filter((item) => item.truck === truckId);
@@ -62,7 +64,7 @@ export const CartOffcanvas = ({ show, stopShowCallback }) => {
   };
 
   return (
-    <Offcanvas show={show} onHide={stopShowCallback} placement="end">
+    <Offcanvas show={showCart} onHide={stopShowingCart} placement="end">
       <Offcanvas.Header closeButton>
         <Offcanvas.Title className="font-oswald">
           <h1>My Cart</h1>
