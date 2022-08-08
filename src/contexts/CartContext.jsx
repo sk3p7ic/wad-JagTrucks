@@ -9,6 +9,11 @@ export const CartProvider = ({ children }) => {
   const [totalItems, setTotalItems] = useState(0);
 
   useEffect(() => {
+    const cartCookie = JSON.parse(localStorage.getItem("jagTrucksUserCart"));
+    if (cartCookie) setCartItems(cartCookie);
+  }, []);
+
+  useEffect(() => {
     let total = 0;
     Object.values(cartItems).forEach((item) => {
       total += item;
@@ -19,6 +24,7 @@ export const CartProvider = ({ children }) => {
   const updateItem = (fullItemId, quantity) => {
     let cart = cartItems;
     Object.assign(cart, { [fullItemId]: quantity });
+    localStorage.setItem("jagTrucksUserCart", JSON.stringify({ ...cartItems }));
     setCartItems({ ...cartItems });
   };
 
