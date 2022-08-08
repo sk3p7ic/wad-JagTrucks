@@ -1,7 +1,6 @@
-import { Nav, NavDropdown } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useJagTrucksAuthentication } from "../../contexts/AuthenticationContext";
-import { CartButton } from "../Navbar/CartButton";
 
 export const UserNavbarSection = () => {
   const { jagTrucksAuth, logout } = useJagTrucksAuthentication();
